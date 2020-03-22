@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger"> 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img src="../../assets/icon.png" height="65px" width="75px"></a>     
+      <ul class="navbar-nav ml-auto" >
+        
+        <li class="nav-item active" *ngIf="!ishost && isadmin">
+          <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="router-link-active" >Admin Dashboard <fa-icon [icon]="faHome"></fa-icon></a>
+        </li>
+        <li class="nav-item active" *ngIf="!ishost && !isadmin">
+          <a class="nav-link" [routerLink]="['/userdashboard']" routerLinkActive="router-link-active" >user Dashboard <fa-icon [icon]="faHome"></fa-icon></a>
+        </li>
+        <li class="nav-item active" *ngIf="ishost">
+          <a class="nav-link" [routerLink]="['/hostdash']" routerLinkActive="router-link-active" >Host Dashboard<fa-icon [icon]="faHome"></fa-icon></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home <fa-icon [icon]="faHome"></fa-icon></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" *ngIf="!userservice.loggedin" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login <fa-icon [icon]="faSignInAlt"></fa-icon></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" *ngIf="!userservice.loggedin" [routerLink]="['/registration']" routerLinkActive="router-link-active" >Register <fa-icon [icon]="faUser"></fa-icon> </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="userservice.loggedin" (click)="logout()" [routerLink]="['/registration']" routerLinkActive="router-link-active" >Log out <fa-icon [icon]="faUser"></fa-icon> </a>
+        </li> 
+    </ul>
+    </div>
+  </nav>
+  

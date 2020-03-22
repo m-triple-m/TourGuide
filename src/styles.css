@@ -1,0 +1,79 @@
+.bg-rg
+{
+    /* background:
+    linear-gradient(0deg, rgba(73, 38, 38, 0.568), rgba(159, 41, 170, 0.37) 56%), */
+    background-image: url('/assets/guest.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.bg-r
+{
+    background-image: url('assets/tour.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-tourist
+{
+    background-image: url('/assets/tourists.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+   
+}
+
+.bg-userdashboard
+{
+    /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0.534), rgba(0, 0, 0, 0.534)),
+    url('/assets/userdashboard.jpg'); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+   
+}
+
+.bg-home{
+ 
+    background-image: url('/assets/tourist.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.bg-login{
+    /* background-attachment: fixed; */
+    background-image: url('/assets/global.JPG');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-host-login{
+    /* background-attachment: fixed; */
+    background-image: url('/assets/global.JPG');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-host{
+    background-attachment: fixed; 
+    background-image: url('/assets/host.JPG');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

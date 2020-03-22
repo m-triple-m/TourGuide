@@ -1,0 +1,11 @@
+.bg-1{
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.349), rgba(0, 0, 0, 0.493)),
+    url('/assets/background/back1.jpg');
+    height: 30rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.top-btn{
+    margin-top: 20%;
+}

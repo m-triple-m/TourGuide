@@ -1,0 +1,22 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-content class="card-body">
+                    <p class="h3 text-center">Upload New Image</p>
+                    <input type="file" (change)="onFileChange($event)" multiple>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-3 mt-5" *ngFor="let image of uploadedImages;let i =  index">
+                    <mat-card style="padding-bottom: 0px;" class="text-center">
+                        <button mat-fab class="del-btn" (click)="remImage(i)">X</button>
+                        <img class="center-block" class="img-fluid" [src]="'http://localhost:3000/hostimages/'+image" mat-card-image>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

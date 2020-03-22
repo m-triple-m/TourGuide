@@ -1,0 +1,84 @@
+ <div class="container text-center bg-1">
+	<button class="btn btn-outline-danger top-btn" [routerLink]="['/browse']" routerLinkActive="router-link-active" >Explore</button>
+ </div> 
+ 
+ <div class="container mt-4">
+    <mat-card>
+     <div class="row">
+       <div class="col-md-5"><mat-card-title style="color: black;">
+        Welcome to GuideMe
+       </mat-card-title>
+      <mat-card-content style="color: black;">
+        Where Travel Meets Culture!
+        <a class="nav-link" [routerLink]="['/userdashboard']" routerLinkActive="router-link-active">Get a host!</a>
+      </mat-card-content></div>
+<div class="col-md-5"> <img src="../../assets/icon.png" height="65px" width="75px"> </div>
+     </div>
+    </mat-card>
+</div>
+
+<div class="container mt-5">
+ <div class="row justify-content-center"> 
+    <div class="card-deck"> 
+      <div class="col-md-3">
+        <div class="card" style="width:210px;height:350px;">
+        <img class="card-img-top" style="width:209px;height:210px;" src="https://cdn.britannica.com/00/189800-050-FCC9D047/Ghats-Varanasi-Ganges-River-India-Uttar-Pradesh.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Varanasi</h5>
+          <p class="card-text">Review for Varanasi</p>
+          <p class="card-text"><small class="text-muted">Updated Review</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card" style="width:210px;height:350px;">
+        <img class="card-img-top" style="width:205x;height:210px;" src="https://www.indiasinvitation.com/wp-content/uploads/2017/09/timing-and-entry-fees-of-delhi-monuments-800x500.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Delhi</h5>
+          <p class="card-text">Review for Delhi</p>
+          <p class="card-text"><small class="text-muted">Updated Review</small></p>
+        </div>
+      </div>
+    </div>
+
+  <div class="col-md-3">
+   <div class="card" style="width:210px;height:350px;">
+      <img class="card-img-top" style="width:208px;height:210px;" src="https://images.unsplash.com/photo-1515004207928-a22c7f92c249?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Agra</h5>
+        <p class="card-text">Review for Agra</p>
+        <p class="card-text"><small class="text-muted">Updated Review</small></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card" style="width:210px;height:350px;">
+    <img class="card-img-top" style="width:209px;height:210px;" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHkAtQMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAABAIDBQEGB//EAEMQAAIBBAADBQQGCAQEBwAAAAECAwAEERIFITETIkFRYQYycYEUkaGxwdEVIzM0UnKC8AdCYuEkY7LxJTVDU3OSov/EABoBAAMBAQEBAAAAAAAAAAAAAAABAwIEBQb/xAAnEQACAgIBBAICAgMAAAAAAAAAAQISAxEhBBMxUSJBFGFx4TJCkf/aAAwDAQACEQMRAD8AjpRpTGlGlfV3PmKC+lGlM6UaUXCgtpXdKY0o0ouFBfSjSmNKNKLjoL6UaUyFo0pXCgtpRpTOlGlFwoLaV3SmNKNKLhQX0o0pnSjSi4UFtKNKZ0o0ouOgtpXdKY0o0pXCgvpRpTOlGlFxUFtK7TGlFFx1LdKNKY0o0rnuXoL6UaUxpRpRcdBfSjSmNaNaVwoL6UaUxrXdaLhQX0o0pjWjWi4UF9KNKY0o0ouFBfSjSmNKugtJbjbslzqAT0FJ5EltmljbekJaUaVonhtyOsYGeneFA4dcn/0x/wDYfnU/yMfs12J+jO0o0puWBopGjb3lODUNK3cw4NC+lGlMaUaUXCgvpXdKv0rulO4UF9KKY0oouFCzSjT0pjSjWua5epRpRpV+tGtFwqUaUaVfrRrRcKlGldEeQT4DGav1FVysyQuVlCqpDOPMDwqWbqFijts6Om6WWedYohpRpVsZV0DKcg1LWqrImtojLG4ur8i+lGlMa0a0WM1F9K0YL79HcMVohbNM90FKzK7dzA5gLz649KW1q61UCQFsdQPDxPqDUOolvGy/Tx+ZZDxXi7KnaWfDsf5tYrgY69OX986jNxHjMMUsrW1gESMn9lcnB0+FMR9kwQ6Q+6PBPX/RVVyIuwmx2PNG5fqv4PhXn3XpHfT9sWvLlL4W1wpQyNbr22gIAk57DB5jHTB5jxpbSrY1G8xAGDM55epzU9a9LDL4I87LH5sX0o0pjWjWqXMVKNKNKv1o1ouFSjSu1drXaLCqS1rulW61zWo2K6KwmSB5nFdKYJHlV8MLyMezfRgCQ2ucY+YpaGC4jtGaWYSzCU6llChhkjBGxOfDlmoz6iktNHRDp7wsmd1o1qyDWRATJBnPhIDy/P0q1IFON57cZzjD9fI/Cl+VAPxZlEUfaSon8TAfXRNYxrbXZmQOwLZLTkFs/BRimI40jfY3MeQARoeYP99KaVZWhKfSEKbDrH3znlnPTqenlXLnyRytHV08Z4N6fkUsuGxJe3FtJLoAE7IFxnOvQDHkKrmgEeSjoy7lcA5IwfGpxOsV28v04mXfGHXyX4ep+PKqoRbjCi6QmQNKx73iTzHLp6VrHncXp+DObDfct8kNa7rRK47HbtIl0QE6EnPr7nj0FMNAFhTZ12PNyki8h15CrvqYnOumlvkoeMoxUjmOtThyrDBI765+v4ig2RtbqeNZJJQWBBY5xy9APKuXDNawmZo3IVlOOmefrRKdsW2OONRzaXI2shCAqSTheW/U8/8Am/360rPeFLNjMzK/eQqHZuo685OY+VZsvtCoV1ksbvVRqxDr0wc9AT/fhSt3xP2UklYXhmncHGJO0Pj071cLl6O1R9j1vcRTyGOCaF5ZJMqhfm3IH1PjVsUva66gMMd4qwOp8qy7Xifsz9JhTh/C5XlJ5dnCTyxnwPlSnCLCWO6lvuHWkxSVnBXd1DNv4gjwwatDqGuCUsEWekxRrWXxbiHEuFQRzT8OQpIxGO0wQfDpn7q0EudbdJrhGQMAfcblyzg8vlXUs8H9nK+nmvosxXcUvb8Rt55nhXdJE95ZF1I5ZprdM43XPxrayJ+GZlilHhojiigTQtnWRTjke90oo7i9i7UvR5Qe1UqwbdpFM2BqUgYbdeuWGOYHhWlY+0aXdqZmspoXwSUZ17mOWTXzC84l28/6rfYruVYglQQDnkAOh8qaN6LSFe1Gu6bBwAdh06/KvPWXMdSWNvlH0n2c4+/E5XMri3ZFbaLC6spHIn54+ut2GV/oluqXEoBKkqkUZVjt5nn1r5r/AIeyNf8AtFKqMQUt5V07PHe5eGfj4V722MHYQYe1/VoupcgFfLPl41huTfy8loJV4O2xdBAI0nKkXD/q0TBIOMjJ+upySTqH1W5ytkWQDsx8x6elJRRWjorzzKroJA4OuVDsebdfLl9lNTQWIZhIUCSRdicsBz5DHT3+Z9ayyhZdNPiYBbjAaADLRkYOM9OZHw6VpZkJ5s574GTICev98/lWW0NjO2FeLeVxgJrtmPqBheoxzx86Zn4nw63LJcXVrFIFEpje4UAAHH8PTNNJik0J7zC5UILgjedjrNGoJwPPp+NLpLKERs3GRwwkEzxjmc8/j/pqqafhZknne9s0VC3eYoQquQoJJXmCcAfEVz/w0bR/S7YBIxaOMqTGeXcPL3uZ5+hoFtDN3LL2FwAZcaW4H/EIfHny8fUeFa094u4hE7hguSpulIXl/B1rAlaxkMipcW8kkjaqi65LxjIXp1Xr8xT7cSsGRUE8btIzRqitzZgDkD8+lNAx21vrf9IT/wDFvktnXteSgDx6eRpe+4wvFeJSWXCOIK0qLuZQNo1B6DAIJOPHNYlxd20/tLAFgkmQuobEOyHGwOxIPLnjGQD616MXVlHxlOH2fDIklbO0qR6FBrsOg556dcUpNpCXnZlS23FWuuwk4qBzySsJwRnpzY86zfaa/i4DaST3Qa8vLi4EUG/cC5HMnXGcYPrz61q3PE2Tj8VmI1a3lheUz5xqwYar/wBVed/xHt5eJWsH0SJmNvcPIyq2e7qBnl6t99ZjF2WyspLTaND2Vvo+P2UrKktldW03ZO0ErfrVwcHmSQM55eldXhFyysv6Su2zK55he6Njy9axf8Po5+GmdbpDAJY1crN3T7zZ69PA9PGt274hNaR8PaCIMbm9KTcs6xfrCWz0HMDn60nu2kKL2tszvbDgklnwyKS2ubiR+072+PInlSsPFrd7aG04nbTTPaEr2pO24x8/E+Xh863/AGruY5uHRR28iOwkBwo6L0z09c184uIbu44tc47eOHfZHijBMmevP5VtbaMZHV8HqJZeGSaz20xgRFMboUZg2QDzCsNuan66n+koBwO6PbGaeMq5JBj1U4xgbE9eXLzHSsBeGXMfD5ppC7SRSdobcqNigyBnBpbF886wm0kKgkBdMHoMff8AClJS2Y7sjfnltY44Glv1iaRC5CWpPVj1PacznNFYP0e7JJubGR2PQnIwPh/fWilZ+h92f7PT8Gg4TIjw23C4b15YFDvEvZhBqCFcIDk4JGMjlTF1BYwiyxbwJZWuXe3mTTPIdGKFhjv+OelJ/ou1WJpIgYJg+VkimlRx0zghqsv452ieD6VeNDJHr2P0tiuNcY5g5B/Gu2OJoxLJGSIJYtDDNxKG2hiRWHaPbTo2A5HU+A5EdOZTPLpWhdvBeLHraatGsbyJcPEDL73PpnJz0AyNuXjVV3b8RvfZtLIcUuJUDxkQyYAQBem2ucZ5/P0pS29koWss8Rf6QzKMhgCVwMYz9VZmtfyaxyg3z4NCaQi5M7QWyNInMzSKdcYCkZYefl+FZyi8eYSW8cKomzBe0Ru9jB5B+ZOSen++xNameKOIzvrFEI1yeeByGSeZ6Vl33CuCWN1ZJxR7oJeB1RwjMBy1Pez5kDp4/OjSX0KU0atrBK5gSVFlc3CDATASHvb5x4NgA88+nhTntFFY8NaSCx4ezIIAVMC8h3u9g6kAn8axYLb2QMFtcw8Xja2JbUPbSY7Qg5ONeXVs1qQjgyRXTji/DSFmLXLSIRjnnC5AzzGPl51Jp/QLJDe3r/pnzXdvHLEjcJkbTGV7Y4fmSM48MciMk0pb3IuZHnXhsilQHHZy5AYAnnnw6jzx4c6e41xI8N4YJeH3ltfdvKixRW7szrHglmIHgCMfMdK0VvOD3l2LZfaHsrh7c7RtDJqudT7/AE2xzx1wa0ra1sHLAn/gt/z/AGJcP4nrxFpWYZeHtEtmQyYB547rAk8umPCk7vios7p5vpOrBkKwfQZAxXABxsvXHP3vCt72m41wV+MWEEM9q5gVzP2a5UZ1AJbAHLr15U7w6eCKBmt4Ip1kIZG7TQdMZBAPh91Na+w7i/1RknivDLGaCXictwisHk7OJJG5qMZOAfQ+uDjNS4pd2cNnclwjOYFYCKFiQcgBtR+FNcPmupOJTtxCB84YxksjmHpjUkdMen51C4mve1QQ312kPbnZJVjcBCBgDBAABHpRpA3YSu57S5u0h4dAEic6NHcQs4JCjZsk9NSox6H1pcstvcG3EPC1nRTdbspQrGCck+ne8/H0qbvxVQ5jvHeXsy+Wtl/a7DmO8cHUD08cZpET8Qg4w91atC98FjSAvAgVYz7/AI9ev29M0JLe2xb14RspdBuGm4l7KOK1LQ9oM69rGxUr7nmSMjkceOaFvkbhcUs8kBVnKwT9k7Bnz0JUY9//AHqviXEvaCT2dnjY5uC5KTAqCBvy5A5xj/V0+0tdzw5Y5b68WRm2kKzMO9gZOM4GfnRJc8DhNryyd3x9r+1SCLifDCTkxjPZM+OQ+Bzkf9qxeLdlbtHIsljdRzSohxNGxXZ9c+PLXnn68VsSwaQxu95NIVzjcq3qOozWVNwu2mTACgcl9xegJ5dPIn66FFv6F3Evs5xRxDZLeJcxSzxTRIIWvYQGQjLYPPGDyx86b4xHLcXUZS1DqQFMrSoMLjrqF8PmaTPs/wAKSJmEP6zKlTkfdWksnd6ZwMZrSxvXgzLOt+RZLaaMnEkXP1bzP2/7fPtXtJnw+yu1rtfon+QhLtThgQc1ySRSoJB+rFZ6yDOBsFPl4fGrO2JAHaDlyOPGu+p5vdZsWlwogCAHbP8ACfyp151EKhsp/QR99Y8B7qFXYE+9jw+w03IZkUbGLn4hgM1yzinI64ZHUu7VQ2A2CRkHly+yoXl04+hpBJGW2L9oyAmP4cqRMkxJjUqEP/LLAn45qQdDoGAVV6YJGM/EUniT8gs8k+B8TXAt0UtaN2kgIUW6Y+OOlQvFSWC8WaOxzMPdFuqM5GDnI55yKgsYaWHs4wpU535MMevKpX+xEi6HZR4ID9dRcNF1NMRVbSyhtpxb2Dsh17qAsmfDnnPjzPmfOrzaG54rFLDFZRu6g7LErE8vLGAfXGazbpmaAQqhJLZAIH2YPWrLRgkgWWC4C4IwVxz+sU44X7MSzR2Q45wZ7XiMqlrfa6Qgt2CjwHxwenMAV6izeVLVAWzhcd3A/CsXiMk3aQpGpKjvxkuMZ+AH41cjMVVyr7/5yo5H/wDNbWLRPv8APCNZZ8XIckdP4uvzqq5u0RXZ2BUfw5P3Vls79mRaNE8w6KXKNj0Oefy9KttZrieNhOi56dwk/WGArTgtC7z3obknSZBLEysPEkkY9DypVQqz74GemQenpU4gOx0V1V16pE2Plg5xS8s2j5TtHAGCqAda5mudI6E9rbGnuCYWVh1PhzpdZdcA9AeucYpSU77Ds5evI+A+dUFmDKexY6+oz99VjDZKWXRqT3aPbYDqPTcHNLxSjXkwJPlSksgZNtQC2QBuTj50vuQOY5Z8Wx99dMcZyzzcmu8uUIyKh2vLGQPTNZXavqMDmPDYH7q6JX1yVXn/ABHpW+2S73JqGT/UfkaKyjKTyKjI8x/tRT7bE8wpG7Fcs3dA5a1MBnKhn3bzLEZpKfr86qX/ADfKrtHFY2ITcLnsZ4wTkFCe9n6qaWS8lXZptABjugtn48sVLgX7s/8A8TfhTDftIv5a5py+WtHdjjuKeynMwUCW5ZeXXCfnQ5fuqZmbl1DFfwx9tJ8T/Yt/P+NNx+9DWVytjk2nojF2pxm0WUYJ5yEkD1wOtdcxNDhbVlyfAHH1451oJ+6L8PxrMuP2zfH8qXDKcx1yUkIwBTIcebA4/KmYO0V1Eiy+GxTP31OD9g3wphP2S/ymsKW3o3LHrnYvdxXRXZLh+zU53dtuflzwB86nD+luzyjd0ZAIIOPU96qZ/wDzH+k1Txf94i/nqrfOjnr97Hu1uoSovQTG498gKD8s5NVXVyIyBK0nYHofo7sU/qBz9lOXn7OL+mnbP9zk+B++sSlpbKwg22tmVDPquv0jaM9GkhYkfd+dRmnSUfq5cRZA2GNT8/ypxOsvwqu86J8fwqGk2W24xM+Uqe6HkVei6qcfViqlwhAGAEPULk5+6uxe6/8AVSDfvVXhDlo5Z5NJPXk0JJmwRvFnP8WMf38aXUk9QvqDUrL3j8Khc9B/Kv3CrLghJuXOzj7EnvSbAf5TkGjZ/wD3CvkQOdcl6r8fwNVj95f4Cqog+GXKXAwJCR/LiilJPerlLZtL9n//2Q==" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Mumbai</h5>
+      <p class="card-text">Review for Mumbai</p>
+      <p class="card-text"><small class="text-muted">Updated Review</small></p>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <mat-card class="mt-5">
+    <mat-card-header>
+      <p class="h3">
+        <button mat-button [routerLink]="['/browse']" routerLinkActive="router-link-active" >more</button>
+      </p>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-3">
+          <p class="h2">Host Area</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+ </div>

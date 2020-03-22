@@ -1,0 +1,41 @@
+<br>
+<br>
+<br><br>
+<div class="container">
+  <div class="row justify-content-center"> 
+      
+    <mat-card class="col-md-4" style="background-color: #4242428c;">    
+        <div class="card-header" style="padding: 1rem 1rem 1rem 1rem; box-shadow:4px 4px 4px; margin-top:-60px; text-align: center; background-color:#dc3545;border-radius: 10px; color:#424242;">
+        <p class="h5" style="color: ghostwhite;">Host Login</p>
+        </div>
+        
+        <mat-card-content>
+            <form [formGroup]="loginform" (submit)="loginSubmit(loginform.value)">
+            <div class="example-container">
+           <br><br>
+              <mat-form-field>
+              <mat-icon matSuffix>account_circle</mat-icon>
+              <input  matInput placeholder="Username" formControlName="username">
+              </mat-form-field>
+        
+            <mat-form-field>
+            <mat-icon matSuffix>lock</mat-icon>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>  
+          
+          <button mat-raised-button style="border-radius: 50px;">Log in</button>
+          <br>
+          <mat-checkbox>Remember me</mat-checkbox>      
+          <hr>
+          <a class="nav-link" [routerLink]="['/forgot']" routerLinkActive="router-link-active"><p style="font-size: small; color: cyan; text-align: right;">Forgot Password?</p></a>
+        </div>
+        </form>
+        </mat-card-content>
+      </mat-card>        
+  </div>
+  </div>
+      
+      
+  
+
+  

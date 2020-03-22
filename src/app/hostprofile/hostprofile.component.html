@@ -1,0 +1,41 @@
+<div class="hosts">
+    <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="card col-md-10" *ngIf="host">
+                    <img src="\assets\guest.jpeg" alt="" class="img-fluid rounded-circle">
+                               <h1><b>{{host.name}}</b></h1>
+                               <br>
+                               <p style="font-size: larger;">
+                                <fa-icon [icon]="faEnvelope"></fa-icon> : {{host.email}}
+                                <br>
+                                <fa-icon [icon]="faPhone"></fa-icon>  : {{host.phone}}
+                                <br>
+                                <fa-icon [icon]="faHome"></fa-icon>  : {{host.address}} ,{{host.city}} ,{{host.state}}
+                                <br>
+                            </p>
+                            <!-- <div class="show-review" *ngIf="reviews">
+                                <ul class="list-group" *ngFor="let review of reviews">
+                                    <li class="list-group-item">review.rating</li>
+                                </ul>
+                            </div>
+                            <form [formGroup]="reviewForm" (submit)="addReview(reviewForm.value)" *ngIf="host">
+                                 <label>Write a review</label>
+                                 <textarea name="review" cols="60" rows="5" formControlName="review"></textarea>
+                                 <button class="btn btn-primary" > <fa-icon [icon]="faEdit"></fa-icon> Submit</button>
+                                 <ngx-star-rating formControlName="rating" [disabled]="false"></ngx-star-rating>
+                            </form>
+                        <br>                -->
+                        
+                        <app-reviews [reviews]="reviews" [myreview]="" [host_id]="hostid" *ngIf="reviews"></app-reviews>
+                        <a class="btn btn-outline-success btn-sm"  [routerLink]="['/booking', host._id]" routerLinkActive="router-link-active">Book Host<fa-icon [icon]="faPen"></fa-icon></a>
+                    <br><br> 
+                       <div class="list-group">
+                                <div class="list-group-item" *ngFor="let review of host.reviews">
+                                    {{review.review}}
+                                </div> <br>
+                            </div>
+               </div>
+               <br>
+           </div>    
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.btn{    
+        background-color:#d9534f;
+        padding: 4px;
+    
+}
+
+img{
+    margin-top: -10px;
+    /* margin-right: 1200px; */
+}
+
+mat-icon
+{
+    height: 10px;
+    width: 10px;
+}

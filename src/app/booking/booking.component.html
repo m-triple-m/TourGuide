@@ -1,0 +1,26 @@
+<div class="container-fluid">
+<div class="row justify-content-center">
+<br><br>
+<mat-card>
+    <mat-card-content class="card-body">
+        <form [formGroup]="bookings" (submit)="booking(bookings.value)">   
+
+            <mat-form-field>
+            <mat-label>Choose a Date</mat-label>
+            <input matInput [min]="minDate"  [matDatepicker]="start" formControlName="startDate">
+            <mat-datepicker-toggle matPrefix [for]="start"></mat-datepicker-toggle>
+            <mat-datepicker #start></mat-datepicker>
+            </mat-form-field>
+        
+                <mat-form-field>
+                <mat-label>Choose a Date</mat-label>
+                <input matInput [min]="mDate" [matDatepicker]="end" formControlName="endDate">
+                <mat-datepicker-toggle matPrefix [for]="end"></mat-datepicker-toggle>
+                <mat-datepicker #end></mat-datepicker>
+                </mat-form-field> 
+                <button>Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+</div>
+</div>

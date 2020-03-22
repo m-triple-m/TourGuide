@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-body">                
+                <label class="h3">Enter your E-mail</label>
+                <input class="form-control" #email>
+                <button class="btn btn-primary" (click)="sendOTP(email.value)">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" *ngIf="showReset">
+    <div class="card-body">
+        <form [formGroup]="resetForm" (submit)="resetPassword(resetForm.value)">
+            <label>Enter OTP</label>
+            <input class="form-control" formControlName="otp">
+            <label>New Password</label>
+            <input class="form-control" formControlName="new">
+            <label>Confirm Password</label>
+            <input class="form-control" formControlName="confirm">
+            <button class="btn btn-warning">Reset password</button>
+        </form>
+    </div>
+</div>

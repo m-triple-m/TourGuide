@@ -1,0 +1,15 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  
+  .mat-raised-button{  
+      background-color: red;
+      padding: 4px;
+  }
+
+  
