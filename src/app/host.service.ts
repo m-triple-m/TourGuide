@@ -43,6 +43,7 @@ return this.http.post(this.url+'/host/addimg',file)
 }
 
 addImages(host_id, data){
+  console.log(data);
   return this.http.put(this.url+`/host/updateimg/${host_id}`, data);
 }
 

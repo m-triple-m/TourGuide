@@ -38,6 +38,7 @@ submitted;
       aadhaar:[],
       verified:false,
       admin:false,
+      images:[],
       //  tourist:false,
       //  tourguide:false,
       //  host:true,

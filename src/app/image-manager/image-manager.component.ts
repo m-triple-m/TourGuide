@@ -15,13 +15,6 @@ export class ImageManagerComponent implements OnInit {
   constructor(private hostservice: HostService) { }
 
   ngOnInit() {
-    // let host_id = JSON.parse(sessionStorage.getItem('user'))
-    // this.hostservice.getHostbyId(host_id).subscribe(data => {
-    //   console.log(data);
-    //   this.host = data;
-    //   this.uploadedImages = data['images'];
-    // })
-
     console.log(this.host);
     this.uploadedImages = this.host['images'];
   }
