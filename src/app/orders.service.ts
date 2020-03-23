@@ -28,6 +28,10 @@ export class OrdersService {
     return this.http.get(this.url+`/getbyhost/${hostid}`);
   }
 
+  getOrderByUser(userid){
+    return this.http.get(this.url+`/getbyuser/${userid}`);
+  }
+
   updateOrder(orderid, data){
     return this.http.put(this.url+`/updatestatus/${orderid}`, data);
   }

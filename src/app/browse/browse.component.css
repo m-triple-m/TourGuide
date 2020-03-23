@@ -1,0 +1,11 @@
+/* .host-detail{
+    height: 10rem;
+} */
+
+.card-footer{
+    background-color: white;
+}
+
+#searchbox{
+    height: 2.5rem !important;
+}

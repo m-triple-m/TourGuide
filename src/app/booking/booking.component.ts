@@ -4,6 +4,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
+import { HostService } from '../host.service';
 
 @Component({
   selector: 'app-booking',
@@ -12,15 +13,16 @@ import Swal from 'sweetalert2';
 })
 
 export class BookingComponent implements OnInit {
-  bookings;
+  bookform;
   current_user;
-  host_id;
+  host;
+  booked=false;
   
   minDate: Date;
   mDate: Date;
   maxDate: Date;
   constructor(private order:OrdersService, private formBuilder:FormBuilder, private route: ActivatedRoute,
-    private router: Router)
+    private router: Router, private hostservice: HostService)
    {
     this.minDate=new Date();
     this.mDate=new Date();
@@ -28,20 +30,27 @@ export class BookingComponent implements OnInit {
 
   ngOnInit()
   {
-
-    this.host_id = this.route.snapshot.paramMap.get('hostid');
+    let host_id = this.route.snapshot.paramMap.get('hostid');
+    this.getHost(host_id);
     this.current_user = JSON.parse(sessionStorage.getItem('user'));
     console.log(this.current_user)
-    this.initform();
+    this.initform(host_id);
   }
 
-  initform(){
-    this.bookings=this.formBuilder.group({
+  getHost(host_id){
+    this.hostservice.getHostbyId(host_id).subscribe(data => {
+      console.log(data);
+      this.host = data;
+    })
+  }
+
+  initform(host_id){
+    this.bookform=this.formBuilder.group({
       booked:new Date(),
-      startDate:'',
-      endDate:'',
+      startDate:['', Validators.required],
+      endDate:['', Validators.required],
       user: this.current_user._id,
-      host: this.host_id,
+      host: host_id,
       verified: false,
       complete: false,
     }, {validator : this.setDate('startDate')})
@@ -57,20 +66,16 @@ export class BookingComponent implements OnInit {
         
     }
   }
- 
 
-  booking(formdata)
-  {
-    console.log(formdata);
-    this.order.addOrder(formdata).subscribe((message)=>
-    {
-      console.log(message); 
-      this.router.navigate(['/userdashboard'])
+  initiateOrder(){
+    if(this.bookform.invalid){
       Swal.fire({
-        icon: 'success',
-        title: 'Booking Requested',
-        text: 'You will be informed once the booking is confirmed from the host end!'
-      })
-    })
+            icon: 'error',
+            title: 'Invalid Request',
+            text: 'Fill complete details to initiate a order!'
+          })
+      return;
+    }
+    this.booked = true;
   }
 }

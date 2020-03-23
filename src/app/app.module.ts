@@ -37,6 +37,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ImageManagerComponent } from './image-manager/image-manager.component';
 
 import { SliderModule } from 'angular-image-slider';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { SliderModule } from 'angular-image-slider';
     HostDashboardComponent,
     HostLoginComponent,
     ImageManagerComponent,
+    PaymentComponent,
    ],
   imports: [
     BrowserModule,

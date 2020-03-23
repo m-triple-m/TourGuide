@@ -1,5 +1,61 @@
 <div class="container-fluid">
-  <div class="row">
+
+  <mat-card class="mt-5">
+    <mat-card-content class="card-body">
+
+      <form [formGroup]="editform" (submit)="updateUser(editform.value)">
+        <div class="row mt-4">
+          <div class="col-md">
+            <div class="row mt-4">
+              <label class="col-form-label lab col-md-2">Name: </label>
+              <input class="form-control col-md-8" formControlName="name">
+            </div>
+  
+            <div class="row mt-4">
+              <label class="col-form-label lab col-md-2">Password: </label>
+              <input class="form-control col-md-8" type="password" formControlName="password">
+            </div>
+  
+            <div class="row mt-4">
+              <label class="col-form-label lab col-md-2">Mobile: </label>
+              <input class="form-control col-md-8" type="number" formControlName="mobile">
+            </div>
+  
+            <div class="row mt-4">
+              <label class="col-form-label lab col-md-2">Address: </label>
+              <textarea class="form-control col-md-8" formControlName="address"></textarea>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="row mt-4">
+              <label class="col-form-label lab col-md-2">Username: </label>
+              <input class="form-control col-md-8" formControlName="username">
+            </div>
+  
+            <div class="row mt-4">
+              <label class="col-form-label lab col-md-2">Email: </label>
+              <input class="form-control col-md-8" type="email" formControlName="email">
+            </div>
+  
+            <div class="row mt-4">
+              <label class="col-form-label lab col-md-2">City: </label>
+              <input class="form-control col-md-8" formControlName="city">
+            </div>
+  
+            <div class="row mt-5">
+              <div class="col-md-4">
+                <button mat-raised-button>Update details</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </form>
+      
+    </mat-card-content>
+  </mat-card>
+
+  <div class="row mt-5">
     <div class="col-md-4"></div>
     <div class="col-md-8">
 
@@ -25,7 +81,6 @@
                     <p class="h6">Start Date :{{booking.startDate | date}}</p>
                     <p class="h6">End Date :{{booking.endDate | date}}</p>
                   </div>
-                  <button class="btn btn-primary" (click)="confirmBooking(booking._id)">Confirm</button>
               </div>
               
             </mat-expansion-panel>

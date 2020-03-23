@@ -14,6 +14,9 @@ export class BrowseComponent implements OnInit {
   hostchoices = {city: '', state: ''};
   cities = [];
   states = [];
+  type = "name";
+
+  searchoptions = ['name', 'city', 'state']
 
   constructor(private hostService:HostService, private guideService:TourguideService) { }
 
@@ -91,6 +94,10 @@ export class BrowseComponent implements OnInit {
       this.hosts.push(host);
      }
     }
+  }
+
+  setType(type){
+    this.type = type;
   }
 
 }
