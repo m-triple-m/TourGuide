@@ -1,164 +1,77 @@
-<div class="container-fluid">
-  <div class="row justify-content-center">    
-  <div class="row mt-5 mb-5">
-                 <div *ngFor="let host of hosts">
-                 <div *ngIf="host.verified">
-                 <mat-card class="example">
-                          <mat-card-header>
-                          <img mat-card-avatar class="header" [src]="'http://localhost:3000/'+host.avatar">
-                          <mat-card-title style="color: black;">{{host.name}}</mat-card-title>               
-                          </mat-card-header>
-                          <mat-card-content>
-                           <p style= "color: black;" >
-                            Address: {{host.address}}     <br>               
-                            Phone number: {{host.phone}}  <br>       
-                            State: {{host.state}}         <br>
-                            City: {{host.city}}           <br>
-                           </p>  
-                           <button class="btn btn-outline-danger"  >Book now</button>
-                          </mat-card-content>                 
-                          </mat-card>
-                        </div> 
-                       </div>                       
-                     <div class="input-group">
-                       <input type="text" #city >
-                       <div class="form-group-append">
-                         <button class="btn btn-primary" >Search by city</button>
-                       </div>
-                     </div>        
-  </div>           
-  </div>             
-  </div>
-  
-  <mat-accordion>
-    <mat-expansion-panel *ngIf="hosts">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Host Selection
-        </mat-panel-title>
-        
-        <mat-panel-description>
-          Select Your Favourite Host 
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div *ngFor="let host of hosts">
-        <div *ngIf="host.verified">
-                <mat-card class="example">
-                 <mat-card-header>
-                 <img mat-card-avatar class="header" [src]="'http://localhost:3000/'+host.avatar">
-                 <mat-card-title style="color: black;">{{host.name}}</mat-card-title>               
-                 </mat-card-header>
-                 <mat-card-content>
-                  <p style="color: black;">
-                   Address: {{host.address}}     <br>               
-                   Phone number: {{host.phone}}  <br>       
-                   State: {{host.state}}         <br>
-                   City: {{host.city}}           <br>
-                  </p>  
-                  <button class="btn btn-outline-danger" [routerLink]="['/booking', host._id]" routerLinkActive="router-link-active">Book now</button>
-                  <br>
-                  <button class="btn btn-outline-danger" [routerLink]="['/hostprofile', host._id]" routerLinkActive="router-link-active" >View Profile </button>
-                 </mat-card-content>                 
-                 </mat-card>
-               </div> 
-              </div> 
-    </mat-expansion-panel>
-  
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Tour Guide
-        </mat-panel-title>
-        <mat-panel-description>
-         Choose Your Favourite Tour Guide
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <div *ngFor="let guide of guides">
-        <!-- <div *ngIf="guid.verified"> -->
-        <mat-card class="example">
-                 <mat-card-header>
-                 <!-- <img mat-card-avatar class="header" [src]="'http://localhost:3000/'+host.avatar"> -->
-                 <mat-card-title style="color: black;">{{guide.name}}</mat-card-title>               
-                 </mat-card-header>
-                 <mat-card-content>
-                  <p style="color: black;">
-                   Username: {{guide.username}}     <br>               
-                   Address: {{guide.address}}  <br>       
-                   Mobile: {{guide.mobile}}      <br>
-                   Languages: {{guide.languages}}  <br>
-                   City: {{guide.city}} <br>
-                  </p>  
-                  <button class="btn btn-outline-danger" [routerLink]="['/booking', guide._id]" routerLinkActive="router-link-active" >Book now</button>
-                  <br>
-                  <button class="btn btn-outline-danger" [routerLink]="['/Guideprofile', guide._id]" routerLinkActive="router-link-active" >View Profile </button>
-                 </mat-card-content>                 
-                 </mat-card>
-               <!-- </div>  -->
-              </div> 
-    </mat-expansion-panel>
-  </mat-accordion>
-  
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Find Perfect Host </h1>
+    <hr class="my-2">
 
-
-
-
-
-
-
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Find Perfect Host </h1>
-      <hr class="my-2">
-      <div class="row justify-content-center">
-        <input class="form-control col-md-8" #city>
-        <button mat-button color="accent" (click)="searchbycity(city.value)">Search</button>
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <div class="btn-group">
+          <button class="btn btn-danger">Search By</button>
+          <div ngbDropdown class="btn-group">
+            <button class="btn btn-outline-danger" id="dropdownBasic1" ngbDropdownToggle>{{type}}</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem (click)="setType('City')">City</button>
+              <button ngbDropdownItem (click)="setType('State')">State</button>
+            </div>
+          </div>
+        </div>
       </div>
+        <div class="col-md-9">
+          <div class="input-group">
+          
+            <input class="form-control" #city id="searchbox">
+            <div class="input-group-append">
+              <button mat-button color="accent" (click)="search(city.value)">Search</button>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
+</div>
 
-  <div class="container-fluid">
-    <div id="host-area">
-      <p class="h4 text-center">Hosts</p>
+<div class="container-fluid">
+  <div id="host-area">
+    <p class="h4 text-center">Hosts</p>
     <hr class="mb-4">
     <p class="text-muted text-center">sort options</p>
     <div class="row justify-content-center">
       <div class="col-md-4">
-        <mat-form-field>
-          <mat-label>City</mat-label>
-          <mat-select (selectionChange)="filterresults($event)" [(ngModel)]="hostchoices.city">
-            <mat-option [value]="''">None</mat-option>
-            <mat-option *ngFor="let city of cities" [value]="city">
-              {{city}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
 
-      <div class="col-md-4">
-        <mat-form-field>
-          <mat-label>City</mat-label>
-          <mat-select (selectionChange)="filterresults($event)" [(ngModel)]="hostchoices.state">
-            <mat-option [value]="''">None</mat-option>
-            <mat-option *ngFor="let state of states" [value]="state">
-              {{state}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-md-3 mt-3" *ngFor="let host of hosts">
-        <div class="card">
-          <img [src]="'http://localhost:3000/hostimages/'+host.avatar" class="img-fluid card-img-top">
-          <div class="card-body">
-            <p class="h4">{{host.name}}</p>
-            <p class="h5">{{host.city}}, {{host.state}}</p>
-            <button mat-raised-button [routerLink]="['/booking', host._id]" routerLinkActive="router-link-active" class="btn-block mt-3">Book Now</button>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem *ngFor="let city of cities" (click)="filterByCity(city)">{{city}}</button>
+          </div>
+        </div>
+
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem *ngFor="let state of states" (click)="filterByState(state)">{{state}}</button>
           </div>
         </div>
       </div>
     </div>
+    <div class="row mt-5 mb-5">
+      <div class="col-md-3 mt-3" *ngFor="let host of hosts">
+        <div class="card">
+          <img [src]="'http://localhost:3000/hostimages/'+host.avatar" class="img-fluid card-img-top">
+          <div class="card-body text-center">
+            <p class="h3">{{host.name}}</p>
+            <p class="text-muted">{{host.address}}, {{host.city}}, {{host.state}}</p>
+            <p class="text-muted">Phone : {{host.phone}}</p>
+          </div>
+          <mat-card-actions class="mb-2">
+            <div class="text-center">
+              <button mat-raised-button [routerLink]="['/booking', host._id]" routerLinkActive="router-link-active"
+                color = "primary" class="col-md-5">Book Now</button>
+              
+              <button mat-button [routerLink]="['/hostprofile', host._id]" routerLinkActive="router-link-active"
+                color="primary" class="col-md-5">View</button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
     </div>
   </div>
+</div>

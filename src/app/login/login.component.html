@@ -27,9 +27,11 @@
           <br>
           <mat-checkbox>Remember me</mat-checkbox>      
           <hr>
-          <a class="nav-link" [routerLink]="['/forgot']" routerLinkActive="router-link-active"><p style="font-size: small; color: cyan; text-align: right;">Forgot Password?</p></a>
+          
         </div>
         </form>
+        <button mat-raised-button [routerLink]="['/tourist']" routerLinkActive="router-link-active" >Sign Up</button>
+          <a class="nav-link" [routerLink]="['/forgot']" routerLinkActive="router-link-active"><p style="font-size: small; color: cyan; text-align: right;">Forgot Password?</p></a>
         </mat-card-content>
       </mat-card>        
   </div>

@@ -19,6 +19,7 @@ import { HostprofileComponent } from './hostprofile/hostprofile.component';
 import { HostDashboardComponent } from './host-dashboard/host-dashboard.component';
 import { HostLoginComponent } from './host-login/host-login.component';
 import { HostmanageComponent } from './hostmanage/hostmanage.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'tourist', component:TouristComponent},
   {path: 'tourguide', component:TourguideComponent},
   {path: 'host', component:HostComponent},
+  {path: 'checkout/:hostid', component:PaymentComponent},
   {path: 'forgot',component:ForgotComponent},
   {path: 'userdashboard', component:UserdashboardComponent},
   {path: 'admin', component:AdminComponent},

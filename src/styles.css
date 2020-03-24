@@ -3,9 +3,11 @@
     /* background:
     linear-gradient(0deg, rgba(73, 38, 38, 0.568), rgba(159, 41, 170, 0.37) 56%), */
     background-image: url('/assets/guest.jpeg');
+    /* linear-gradient(to right, rgba(0, 0, 0, 0.479), rgba(0, 0, 0, 0.479)); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 
 }
 
@@ -44,6 +46,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 
 }
 .bg-login{

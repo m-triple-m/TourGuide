@@ -26,6 +26,7 @@ export class HostprofileComponent implements OnInit {
   currentUser;
   reviewForm;
   reviews;
+  hostimages = ['assets/guest.jpeg', 'assets/images/cta01.jpg']
 
   constructor(private hosts:HostService,private formbuilder:FormBuilder,  private activatedroute:ActivatedRoute) { }
 

@@ -3,7 +3,7 @@
 <br><br>
 <mat-card>
     <mat-card-content class="card-body">
-        <form [formGroup]="bookings" (submit)="booking(bookings.value)">   
+        <form [formGroup]="bookform" (submit)="initiateOrder(bookform.value)">
 
             <mat-form-field>
             <mat-label>Choose a Date</mat-label>
@@ -17,10 +17,12 @@
                 <input matInput [min]="mDate" [matDatepicker]="end" formControlName="endDate">
                 <mat-datepicker-toggle matPrefix [for]="end"></mat-datepicker-toggle>
                 <mat-datepicker #end></mat-datepicker>
-                </mat-form-field> 
-                <button>Submit</button>
+                </mat-form-field>
+                <button mat-button>Submit</button>
         </form>
     </mat-card-content>
 </mat-card>
 </div>
 </div>
+
+<app-payment [host]="host" [amt]="100" [order]="bookform.value" *ngIf="booked"></app-payment>

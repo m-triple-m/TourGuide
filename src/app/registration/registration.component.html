@@ -1,6 +1,5 @@
-            <div class="bg-rg">
-              <br><br>                    
-          <div class="container">
+            <!-- <div class="bg-rg">                   -->
+          <!-- <div class="container">
               <div class="row justify-content-center">
                   <div class="col md-3">
                     <div class="card-header" style="background-color: rgba(0, 0, 0, 0.623);color: cornsilk;">Join Us!</div>
@@ -8,7 +7,7 @@
                       
                         <div class="card-body">
                               <img src="../../assets/tour-guide-training-hiring.jpg" height=90% width=100%>
-                              <a class="nav-link" href="#" [routerLink]="['/tourist']" routerLinkActive="router-link-active" >
+                              <a class="nav-link" href="#"  >
                                  <p class="display-5">
                                    Be Our Guest
                               </p></a>
@@ -54,9 +53,43 @@
                   </div>
               </div>
           </div>
-          </div>
-          <br><br><br><br>
-          <br><br><br><br>
-          
+        </div> -->
+
+        <div class="container-fluid top-con">
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-card [routerLink]="['/tourist']" routerLinkActive="router-link-active">
+                        <p class="h3 text-center">Join Us!</p>
+                        <img src="../../assets/tour-guide-training-hiring.jpg" mat-card-image>
+                        <mat-card-content class="card-body">
+                            <p class="h4 text-center">Be Our Guest</p>
+                            <p class="text-muted text-center">Register now to make your trips easier.</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+
+                <div class="col-md-4">
+                    <mat-card [routerLink]="['/host']" routerLinkActive="router-link-active" >
+                        <p class="h3 text-center">Invite Guests!</p>
+                        <img src="../../assets/house.jpg" mat-card-image>
+                        <mat-card-content class="card-body">
+                            <p class="h4 text-center">Become a  host!</p>
+                            <p class="text-muted text-center">Sign up to be a host for GuideMe.</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+
+                <div class="col-md-4">
+                    <mat-card [routerLink]="['/tourguide']" routerLinkActive="router-link-active" >
+                        <p class="h3 text-center">Show Around!</p>
+                        <img src="../../assets/guider.jpg" mat-card-image>
+                        <mat-card-content class="card-body">
+                            <p class="h4 text-center">Become a Guide!</p>
+                            <p class="text-muted text-center">Help people find their way around your town.</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
           
           

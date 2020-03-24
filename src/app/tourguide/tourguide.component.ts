@@ -15,6 +15,8 @@ export class TourguideComponent implements OnInit {
   forms;
   allusers;
   submitted=false;
+  hide = true;
+
   constructor(private formBuilder:FormBuilder, private userservice:TourguideService) { this.forms; }
     LangList: string[] = ['Hindi', 'English', 'Tamil', 'Telugu', 'Punjabi', 'Malayalam', 'Urdu'];
   ngOnInit() {

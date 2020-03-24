@@ -37,6 +37,11 @@ getByUsername(username)
  return this.http.get(this.url+`/allusers/getbyusername/${username}`)
 }
 
+updateUser(id, userdata)
+{
+ return this.http.put(this.url+`/allusers/update/${id}`, userdata)
+}
+
 addUsers(formdata)
 {
   return this.http.post(this.url+'/allusers/adduser',formdata)

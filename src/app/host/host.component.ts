@@ -10,43 +10,43 @@ import Swal from 'sweetalert2';
   styleUrls: ['./host.component.css']
 })
 export class HostComponent implements OnInit {
-hosts;
-imagePath;
-imgURL;
-message;
-selectedFile;
-avatarName;
-forms;
-submitted;
+
+  hosts;
+  imagePath;
+  imgURL;
+  message;
+  selectedFile;
+  avatarName;
+  forms;
+  submitted;
+
   constructor(private formBuilder:FormBuilder, private hostService:HostService) { this.hosts;}
   isLinear = false;
+  hide = true;
   ngOnInit() {
     
     document.body.classList.add("bg-host");
     
     this.hosts=this.formBuilder.group({
-      name:['',[Validators.required]],
-      username:["",[Validators.required,Validators.minLength(5)]],
-      password:['',[Validators.required]],
-      confirm:['',[Validators.required]],
-      email:["",[Validators.required]],
-      phone:["",[Validators.required]],
-      avatar:[],
-      state:[],
-      city:[],
-      address:[],
-      aadhaar:[],
+      name:['', Validators.required],
+      username:["", [Validators.required, Validators.minLength(5)]],
+      password:['', Validators.required],
+      confirm:['', Validators.required],
+      email:["", [Validators.required, Validators.email]],
+      phone:["", [Validators.required, Validators.maxLength(10)]],
+      avatar:[""],
+      state:["", Validators.required],
+      city:["", Validators.required],
+      address:["", Validators.required],
+      aadhaar:["", [Validators.required, Validators.maxLength(12)]],
       verified:false,
-      admin:false,
-      //  tourist:false,
-      //  tourguide:false,
-      //  host:true,
+      images:[],
     },
     {validator : this.matchPassword('password','confirm')})
     console.log(sessionStorage.getItem('user'));
   }
 
-  onFileChanged(event)
+  onfileUpload(event)
   {
     console.log(event.target.files);
     this.uploadImage(event);
@@ -77,6 +77,7 @@ submitted;
       Swal.fire("Images Only");
       return;
     }
+    this.preview(event.target.files)
     let formData=new FormData();
     this.selectedFile=files[0];
     this.avatarName=this.selectedFile.name;
@@ -88,8 +89,27 @@ submitted;
       })
   }
 
-UserSubmit(formdata)
+  preview(files) {
+    if (files.length === 0)
+      return;
+ 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result;
+    }
+  }
+
+UserSubmit()
 {
+  let formdata = this.hosts.value;
   console.log(formdata);
   if(!(this.hosts.valid && this.avatarName))
   {
@@ -113,4 +133,5 @@ returnControls()
 {
 return this.hosts.controls;
 }
+
 }

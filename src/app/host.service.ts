@@ -43,12 +43,21 @@ return this.http.post(this.url+'/host/addimg',file)
 }
 
 addImages(host_id, data){
+  console.log(data);
   return this.http.put(this.url+`/host/updateimg/${host_id}`, data);
 }
 
 getHostbyCity(city)
 {
   return this.http.get(this.url+`/host/gethostcity/${city}`)
+}
+
+searchCity(city){
+  return this.http.get(this.url+`host/matchbycity/${city}`)
+}
+
+searchName(name){
+  return this.http.get(this.url+`host/matchbyname/${name}`)
 }
 
 UpdateHost(host_id, hostdata){
