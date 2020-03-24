@@ -1,11 +1,29 @@
 .bg-1{
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.349), rgba(0, 0, 0, 0.493)),
     url('/assets/background/back1.jpg');
-    height: 30rem;
+    height: 40rem;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .top-btn{
     margin-top: 20%;
+}
+
+.top-con{
+    padding-top: 10rem;
+}
+
+.wel-card{
+    margin-top: -10rem;
+}
+
+.feature-title{
+    padding-top: 5rem;
+}
+
+.showcase-text{
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background-color: white;
 }

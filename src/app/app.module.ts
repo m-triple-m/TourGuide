@@ -38,6 +38,7 @@ import { ImageManagerComponent } from './image-manager/image-manager.component';
 
 import { SliderModule } from 'angular-image-slider';
 import { PaymentComponent } from './payment/payment.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PaymentComponent } from './payment/payment.component';
     HostLoginComponent,
     ImageManagerComponent,
     PaymentComponent,
+    FooterComponent,
    ],
   imports: [
     BrowserModule,

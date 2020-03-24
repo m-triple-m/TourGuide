@@ -10,11 +10,10 @@ import { TourguideService } from '../tourguide.service';
 export class BrowseComponent implements OnInit {
 
   hosts = [];
-  guides;
   hostchoices = {city: '', state: ''};
   cities = [];
   states = [];
-  type = "name";
+  type = "Name";
 
   searchoptions = ['name', 'city', 'state']
 
@@ -23,29 +22,29 @@ export class BrowseComponent implements OnInit {
   ngOnInit()
   {
     document.body.classList.add('bg-userdashboard');
+    this.getHosts();
+    
+  }
+
+  getHosts(){
     this.hostService.getHost().subscribe(data=>{
-      console.log(data);
-      
       this.filterVerified(data);
       this.getDetails(this.hosts);
     })
-
-    this.guideService.getTourGuide().subscribe(data=>{
-      this.guides=data;
-    })
-
-   
+    
   }
-  searchbycity(city)
-  {
-    this.hostService.getHostbyCity(city).subscribe(data=>{
-      this.filterVerified(data);
-      console.log(this.hosts);
-  })
-        
-  this.guideService.getTourGuidebyCity(city).subscribe(data=>{
-   this.guides=data;
-        })
+
+  search(value){
+    console.log(value+this.type)
+    if( this.type == 'City'){
+      this.hostService.searchCity(value).subscribe(data=>{
+        this.filterVerified(data);
+    })
+    }else if( this.type == 'Name'){
+      this.hostService.searchName(value).subscribe(data=>{
+        this.filterVerified(data);
+    })
+    }
   }
 
   getDetails(hosts){
@@ -60,40 +59,30 @@ export class BrowseComponent implements OnInit {
     }
   }
 
-  filterresults(){
-      if(this.hostchoices.city){
-        let temp = this.hosts;
-        this.hosts = [];
-        for(let host of temp){
-          if(host.city == this.hostchoices.city){
-            console.log(host.name);
-            if(!this.hosts.includes(host)){
-              this.hosts.push(host);
-            }
-          }
-        }
-      }
+  filterByCity(city){
+    this.hostService.getHost().subscribe(data=>{
+      this.filterVerified(data);
+      this.getDetails(this.hosts);
+      this.hosts = this.hosts.filter( host => {
+        return host.city == city;
+      })
+    })
+  }
 
-      if(this.hostchoices.state){
-        let temp = this.hosts;
-        this.hosts = [];
-        for(let host of temp){
-          if(host.state == this.hostchoices.state){
-            console.log(host.name);
-            if(!this.hosts.includes(host)){
-              this.hosts.push(host);
-            }
-          }
-        }
-      }
+  filterByState(state){
+    this.hostService.getHost().subscribe(data=>{
+      this.filterVerified(data);
+      this.getDetails(this.hosts);
+      this.hosts = this.hosts.filter( host => {
+        return host.state == state;
+      })
+    })
   }
 
   filterVerified(hosts){
-    for(let host of hosts){
-     if(host.verified){
-      this.hosts.push(host);
-     }
-    }
+    this.hosts = hosts.filter( host => {
+      return host.verified;
+    })
   }
 
   setType(type){

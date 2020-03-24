@@ -52,6 +52,14 @@ getHostbyCity(city)
   return this.http.get(this.url+`/host/gethostcity/${city}`)
 }
 
+searchCity(city){
+  return this.http.get(this.url+`host/matchbycity/${city}`)
+}
+
+searchName(name){
+  return this.http.get(this.url+`host/matchbyname/${name}`)
+}
+
 UpdateHost(host_id, hostdata){
   return this.http.put(this.url+`/host/updatestatus/${host_id}`, hostdata)
 }

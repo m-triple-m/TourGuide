@@ -1,6 +1,7 @@
 <div class="container-fluid">
-
-  <mat-card class="mt-5">
+  <p class="h2 text-center mt-5">Update User Details</p>
+  <hr>
+  <mat-card >
     <mat-card-content class="card-body">
 
       <form [formGroup]="editform" (submit)="updateUser(editform.value)">
@@ -15,12 +16,7 @@
               <label class="col-form-label lab col-md-2">Password: </label>
               <input class="form-control col-md-8" type="password" formControlName="password">
             </div>
-  
-            <div class="row mt-4">
-              <label class="col-form-label lab col-md-2">Mobile: </label>
-              <input class="form-control col-md-8" type="number" formControlName="mobile">
-            </div>
-  
+
             <div class="row mt-4">
               <label class="col-form-label lab col-md-2">Address: </label>
               <textarea class="form-control col-md-8" formControlName="address"></textarea>
@@ -36,12 +32,7 @@
               <label class="col-form-label lab col-md-2">Email: </label>
               <input class="form-control col-md-8" type="email" formControlName="email">
             </div>
-  
-            <div class="row mt-4">
-              <label class="col-form-label lab col-md-2">City: </label>
-              <input class="form-control col-md-8" formControlName="city">
-            </div>
-  
+            
             <div class="row mt-5">
               <div class="col-md-4">
                 <button mat-raised-button>Update details</button>
@@ -54,12 +45,56 @@
       
     </mat-card-content>
   </mat-card>
+</div>
 
+<div class="container">
   <div class="row mt-5">
-    <div class="col-md-4"></div>
-    <div class="col-md-8">
+    <div class="col-md-6 mt-5">
+      <mat-card>
+        <mat-card-header>
+          <p class="h4 text-center">Ongoing Bookings</p>
+        </mat-card-header>
+        <hr>
+        <div *ngIf="!bookings.length">
+          <p class="h2 mt-2 text-center">No Data Avalaible</p>
+        </div>
+        <mat-card-content class="card-body">
+          <mat-accordion *ngFor="let booking of bookings">
+            <mat-expansion-panel *ngIf="booking.verified">
+              <mat-expansion-panel-header color="primary">
+                <mat-panel-title>
+                  {{booking.user.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Booked : {{booking.booked | date}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="panel-body">
+                  <p class="h6">Name : {{booking.user.name}}</p>
+                  <p class="h6">Email : {{booking.user.email}}</p>
+                  <p class="h6">Address :{{booking.user.address}}</p>
+                  <hr>
+                  <div class="row">
+                    <p class="h6">Start Date :{{booking.startDate | date}}</p>
+                    <p class="h6">End Date :{{booking.endDate | date}}</p>
+                  </div>
+              </div>
+              
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 mt-5">
 
       <mat-card>
+        <mat-card-header>
+          <p class="h4 text-center">Pending Bookings</p>
+        </mat-card-header>
+        <hr>
+        <div *ngIf="!bookings.length">
+          <p class="h2 mt-2 text-center">No Data Avalaible</p>
+        </div>
         <mat-card-content class="card-body">
 
           <mat-accordion *ngFor="let booking of bookings" >

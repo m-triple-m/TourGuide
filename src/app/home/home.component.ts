@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faCoffee, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faPen, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { HostService } from '../host.service';
 @Component
 ({
   selector: 'app-home',
@@ -11,15 +12,29 @@ export class HomeComponent implements OnInit
 {
   faCoffee=faCoffee;
   faPen=faPen;
+  more = faArrowRight;
+  hosts;
+
+  constructor(private hostservice: HostService){
+    
+  }
   
   ngOnInit() 
   {
     document.body.classList.add("bg-home");
     document.body.classList.add("is-preload");
+    this.getHosts();
   }
 
-ngOnDestroy()
-{
-  document.body.classList.remove("bg-home");
-}
+  getHosts(){
+    this.hostservice.getHost().subscribe(data => {
+      console.log(data);
+      this.hosts = data;
+    })
+  }
+
+  ngOnDestroy()
+  {
+    document.body.classList.remove("bg-home");
+  }
 }
