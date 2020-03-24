@@ -1,175 +1,127 @@
-<div class="user">
-<mat-horizontal-stepper style="background-color: #201c1c4f;">
-    <mat-step>
-        <ng-template matStepLabel>Fill out your details</ng-template>
-        <div class="container mt-5">
-                <div class="row justify-content-center">
+<div class="container top-con">
+  <mat-card>
+        <mat-card-content class="card-body">
+              <p class="display-4 text-center">Sign Up as Host</p>
+        </mat-card-content>
+  </mat-card>
+   <mat-card id="main-card" class="mt-4">
+         <mat-card-content>
+           <mat-horizontal-stepper [linear]="true">
+            <mat-step [stepControl]="hosts">
+              <!-- Step 1 -->
+              <ng-template matStepLabel>Fill out your details</ng-template>
+
+              <div class="row mt-5">
                 <div class="col-md-6">
+                      <img src="../../assets/images/tourist-signup.png" class="img-fluid">
+                      <button mat-raised-button class="mt-5 btn-lg btn-block" color="accent" [routerLink]="['/login']" routerLinkActive="router-link-active" >Or Login to Continue</button>
+                </div>
+    
+                <div class="col-md-6">
+                      <form [formGroup]="hosts">
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>Name</mat-label>
+                                  <input matInput placeholder="Mr. Anderson" formControlName="name">
+                                  <mat-error *ngIf="returnControls().name.errors">Name is Required</mat-error>
+                            </mat-form-field>
+    
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>Username</mat-label>
+                                  <input matInput placeholder="Mr. Anderson" formControlName="username">
+                                  <mat-error *ngIf="returnControls().username.errors">Username is Required</mat-error>
+                            </mat-form-field>
+    
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>Password</mat-label>
+                                  <input matInput placeholder="Mr. Anderson" formControlName="password" [type]="hide ? 'password' : 'text'">
+                                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                  </button>
+                                  <mat-error *ngIf="returnControls().password.errors">Password is Required</mat-error>
+                            </mat-form-field>
+    
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>Confirm</mat-label>
+                                  <input matInput placeholder="Mr. Anderson" formControlName="confirm" [type]="hide ? 'password' : 'text'">
+                                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                  </button>
+                                  <mat-error *ngIf="returnControls().confirm.errors">Passwords must match</mat-error>
+                            </mat-form-field>
+    
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>Email</mat-label>
+                                  <input matInput placeholder="Mr. Anderson" formControlName="email">
+                                  <mat-error *ngIf="returnControls().email.errors">Email is Required</mat-error>
+                            </mat-form-field>
 
-                <mat-card class="card">
-                  <div class="card-header">
-                     <h1>Host Sign Up</h1>
-                  </div>                   
-                  <div class="card-body">
-                      <form [formGroup]="hosts" >
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Name</mat-label>
-                          <input formControlName="name" matInput>
-                          <mat-error *ngIf="returnControls().name.errors" >Name is Required</mat-error>
-                        </mat-form-field>
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>Phone</mat-label>
+                                  <input matInput placeholder="9999 999 999" formControlName="phone">
+                                  <mat-error *ngIf="returnControls().phone.errors">phone is Required</mat-error>
+                            </mat-form-field>
 
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Username</mat-label>
-                          <input formControlName="username" matInput>
-                          <mat-error *ngIf="returnControls().username.errors" >Username is Required</mat-error>
-                        </mat-form-field>
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>State</mat-label>
+                                  <input matInput placeholder="state in world" formControlName="state">
+                                  <mat-error *ngIf="returnControls().state.errors">state is Required</mat-error>
+                            </mat-form-field>
 
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Password</mat-label>
-                          <input formControlName="password" matInput>
-                          <mat-error *ngIf="returnControls().password.errors" >Invalid Password</mat-error>
-                        </mat-form-field>
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>City</mat-label>
+                                  <input matInput placeholder="city in world" formControlName="city">
+                                  <mat-error *ngIf="returnControls().city.errors">city is Required</mat-error>
+                            </mat-form-field>
 
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Confirm Password</mat-label>
-                          <input formControlName="confirm" matInput>
-                          <mat-error *ngIf="returnControls().confirm.errors" >Passwords must match</mat-error>
-                        </mat-form-field>
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                                  <mat-label>Aadhaar</mat-label>
+                                  <input matInput placeholder="XXXX XXXX XXXX XXXX" formControlName="aadhaar">
+                                  <mat-error *ngIf="returnControls().aadhaar.errors">Aadhar is Required</mat-error>
+                            </mat-form-field>
 
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Email</mat-label>
-                          <input formControlName="email" matInput>
-                          <mat-error *ngIf="returnControls().email.errors" >Invalid Email</mat-error>
-                        </mat-form-field>
+                            <mat-form-field appearance="outline" style="font-size: small;" class="col-md">
+                                  <mat-label>Address</mat-label>
+                                  <textarea matInput placeholder="Mr. Anderson" formControlName="address"></textarea>
+                                  <mat-error *ngIf="returnControls().address.errors">Address is Required</mat-error>
+                            </mat-form-field>
 
-                        <mat-form-field class="col-md-12">
-                          <mat-label>State</mat-label>
-                          <input formControlName="state" matInput>
-                          <mat-error *ngIf="returnControls().state.errors" >State is Required</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="col-md-12">
-                          <mat-label>City</mat-label>
-                          <input formControlName="city" matInput>
-                          <mat-error *ngIf="returnControls().city.errors" >Name is Required</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Address</mat-label>
-                          <input formControlName="address" matInput>
-                          <mat-error *ngIf="returnControls().address.errors" >Address is Required</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Phone</mat-label>
-                          <input formControlName="phone" matInput>
-                          <mat-error *ngIf="returnControls().phone.errors" class= "label-error">Phone is Required</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="col-md-12">
-                          <mat-label>Adhaar Id</mat-label>
-                          <input formControlName="aadhaar" matInput>
-                          <mat-error *ngIf="returnControls().aadhaar.errors" class= "label-error">Adhaar is Required</mat-error>
-                        </mat-form-field>
-
-
-                          <!-- <label>Name</label>
-                          <input type="text" class="form-control" formControlName="name">
-                          
-                          <label>Username</label>
-                          <input type="text" id="username" class="form-control" formControlName="username">
-                          <div *ngIf="submitted && returnControls().username.errors" class= "label-error">Username is Required</div>
-                          <label>Password</label>
-                          <input type="password" class="form-control" formControlName="password">
-                          <div *ngIf="submitted && returnControls().password.errors" class= "label-error">Password is invalid</div>
-                          <label>Confirm Password</label>
-                          <input type="password" class="form-control" formControlName="confirm">
-                          <div *ngIf="submitted && returnControls().confirm.errors" class= "label-error">Password must match</div>
-                          <label>Email</label>
-                          <input type="text" class="form-control" formControlName="email">
-                          <div *ngIf="submitted && returnControls().email.errors" class= "label-error">Email is Required</div>
-                          <label>State</label>
-                          <input type="text" class="form-control" formControlName="state">
-                          <div *ngIf="submitted && returnControls().state.errors" class= "label-error">State is Required</div>
-                          <label>City</label>
-                          <input type="text" class="form-control" formControlName="city">
-                          <div *ngIf="submitted && returnControls().city.errors" class= "label-error">City is Required</div>
-                          <label>Address</label>
-                          <input type="text" class="form-control" formControlName="address">
-                          <div *ngIf="submitted && returnControls().address.errors" class= "label-error">Address is Required</div>
-                          <label>Phone</label>
-                          <input class="form-control" formControlName="phone">
-                          <div *ngIf="submitted && returnControls().phone.errors" class= "label-error">Phone is Required</div><br>                        
-                          <label>Aadhaar Number</label>
-                          <input class="form-control" formControlName="aadhaar">
-                          <div *ngIf="submitted && returnControls().aadhaar.errors" class= "label-error">Aadhaar is Required</div><br>                         -->
+                            <div class="col-md-10">
+                                  <button mat-raised-button color="warn" class="ml-auto mt-3" matStepperNext>Next</button>
+                            </div>
                       </form>
-                  </div>
-                  <div class="card-footer">
-                      <p class="text muted text-center" style="font-size:small"> Already have an account?        
-                      <a class="nav-link" [routerLink]="['/hostlogin']" routerLinkActive="router-link-active">Sign In.</a>
-                      </p>
-                      <div>
-                        <button mat-raised-button matStepperNext>Next</button>
+                      <div class="col-md-10">
+                            
                       </div>
-                  </div>
-              </mat-card>
-
-
                 </div>
-                </div>
-                </div>
-                </mat-step>
+          </div>
+            </mat-step>
 
             <mat-step>
-            <ng-template matStepLabel>Upload documents and pictures</ng-template>
-            <div class="row justify-content-center">
-                   <div class="col-md-6">
-                   <div class="card" >
-                   <div class="card-header">
-                   <h1>Host Sign Up</h1>
-                   </div>
-
-                <div class="card-body">
-                     <form [formGroup]="hosts">
-                     <label>Profile picture</label>
-                     <input type="file" (change)="onFileChanged($event)">
-                     <img [src]="imgURL" *ngIf="imgURL">
-                     <button (click)="UserSubmit(hosts.value)" class="btn btn-danger">Submit</button> 
-                     </form>
-                </div>   
-
-                 <div class="card-footer">
-                    <p class="text muted text-center" style="font-size:small"> Already have an account?
-                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Sign In.</a>
-                    </p>
-                    <div>
-                    <button mat-raised-button matStepperNext>Next</button>
-                    </div>
+              <!-- Step 2 -->
+              <div class="row sec-row">
+                <div class="col-md-6">
+                  
+                  <div file="Click or drag file" >
+                    <input class="myinput" type="file" (change) = "onfileUpload($event)">
+                  </div>
+                  <button color="accent" mat-raised-button class="btn-block" (click)="UserSubmit()">Sign Up as Host!</button>
                 </div>
+                <div class="col-md-6">
+                  <img [src]="imgURL" *ngIf="imgURL" class="img-fluid" style="width: 100%;">
                 </div>
               </div>
-            </div>       
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-         </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Verification Status</ng-template>
-        <p style="color: white;">
-          GuideMe will now verify your submitted details.
-          <br>
-          On successful verification, 
-          you will be a registered host!
-        </p>
-    
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
+            </mat-step>
 
-</mat-horizontal-stepper>
+            <mat-step>
+              <!-- Step 3 -->
+              <div class="th-row">
+                <p class="h4 text-center">
+                  GuideMe will now verify your submitted details. On successful verification, you will be a registered host!
+                </p>
+              </div>
+            </mat-step>
+           </mat-horizontal-stepper>
+              
+         </mat-card-content>
+   </mat-card>
 </div>
-
-
-

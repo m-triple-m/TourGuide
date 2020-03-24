@@ -1,0 +1,44 @@
+.sec-row, .th-row{
+    height:37.8rem;
+}
+
+.top-con{
+    margin-top: 8rem;
+    margin-bottom: 10rem;
+}
+
+.myinput{
+    display:block;
+    padding:50px;
+    background:#ccc;
+    opacity:0;
+  }
+  [file]{
+    display:block;
+    border:5px dashed #3294c3;
+    background:#fff;
+    width:50%;
+    position:relative;
+    margin:50px auto;
+  }
+  [file]:before{
+    font-family:fontawesome;
+    content:"\f067";
+    display:block;
+    font-size:30px;
+    text-align:center;
+    width:100%;
+    margin-top:calc(50px - 5px);
+    position:absolute;
+    color:#3294c3;
+  }
+  [file]:after{
+    content:attr(file);
+    display:block;
+    font-size:15px;
+    text-align:center;
+    width:100%;
+    margin-top:-40px;
+    position:absolute;
+    color:#ccc;
+  }

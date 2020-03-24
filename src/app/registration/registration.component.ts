@@ -10,6 +10,11 @@ export class RegistrationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.body.classList.add('bg-rg')
+  }
+
+  ngOnDestroy(){
+    document.body.classList.remove('bg-rg')
   }
 
 }
