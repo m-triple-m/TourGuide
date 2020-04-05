@@ -1,0 +1,127 @@
+<div class="container-fluid top-con" *ngIf="guide">
+    <p class="display-4 text-center">Guide Dashboard</p>
+    <hr>
+      <div class="row">
+          <div class="col-md-4" style="border-right: 1px solid rgb(180, 180, 180);">
+            <mat-card>
+              <mat-card-content class="card-body">
+                <div class="text-center">
+                  <img [src]="'http://localhost:3000/guide/'+guide.avatar" class="img-fluid rounded-circle">
+                </div>
+                <p class="h3 mt-5 text-center">Hello {{guide.name}}</p>
+                <p class="text-center">{{guide.email}}</p>
+                <hr>
+                <div class="row align-items-center mt-4">
+                  <button mat-button class="btn btn-block" color="primary" (click)="toggleEditForm()">Account Details</button>
+                </div>
+                <hr>
+                <div class="row align-items-center mt-4">
+                  <button mat-button class="btn btn-block" color="primary" (click)="toggleBookings()">Manage Bookings</button>
+                </div>
+                <hr>
+                <div class="row align-items-center mt-4">
+                  <button mat-button class="btn btn-block" color="primary" (click)="toggleBlogForm()">Add Blog</button>
+                </div>
+  
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-md-8">
+              <div class="booking-area" *ngIf="showBlogs">
+                <mat-card>
+                  <mat-card-header>
+                    <p class="h4 text-center">Ongoing Bookings</p>
+                  </mat-card-header>
+                  <hr>
+                  <div *ngIf="!blogs.length">
+                    <p class="h2 mt-2 text-center">No Data Avalaible</p>
+                  </div>
+                  <mat-card-content class="card-body">
+                    <mat-accordion *ngFor="let blog of blogs" class="mt-5">
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header color="primary">
+                          <mat-panel-title>
+                            {{blog.title}}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            
+                            uploaded : {{blog.created | date}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <img [src]="'http://localhost:3000/guide/'+blog.blogImage" style="height: 20rem;" class="img-fluid">
+                            </div>
+                            <div class="col-md-8">
+                              <p>{{blog.text}}</p>
+                            </div>
+                          </div>
+                            
+                        </div>
+                        
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </mat-card-content>
+                </mat-card>
+            </div>
+  
+  
+              <div class="container-fluid" *ngIf="showeditform">
+                <p class="h2 text-center mt-5">Update User Details</p>
+                <hr>
+                <mat-card >
+                  <mat-card-content class="card-body">
+              
+                    <form [formGroup]="editform" (submit)="updateProfile(editform.value)">
+                      <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                            <mat-label>Name</mat-label>
+                            <input matInput placeholder="Mr. Anderson" formControlName="name">
+                            <mat-error *ngIf="returnControls().name.errors">Name is Required</mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Mr. Anderson" formControlName="username">
+                            <mat-error *ngIf="returnControls().username.errors">Username is Required</mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Mr. Anderson" formControlName="email">
+                            <mat-error *ngIf="returnControls().email.errors">Email is Required</mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                        <mat-label>Languages Known</mat-label>
+                        <mat-select formControlName="languages" multiple>
+                          <mat-option *ngFor="let language of guide.LangList" [value]="language">{{language}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" style="font-size: small;" class="col-md-6">
+                        <mat-label for="city">City</mat-label>
+                        <input matInput  formControlName="city">
+                        <mat-error *ngIf="returnControls().city.errors" class="label-error">City is Invalid</mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" style="font-size: small;" class="col-md">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput placeholder="Mr. Anderson" formControlName="address" rows="5"></textarea>
+                            <mat-error *ngIf="returnControls().address.errors">Address is Required</mat-error>
+                      </mat-form-field>
+
+                      <div class="col-md-10">
+                            <button mat-raised-button color="warn" class="ml-auto mt-3">Sign Up as Tour Guide</button>
+                      </div>
+                </form>
+
+                    
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <app-create-blog [guide]="guide" *ngIf="showBlogForm"></app-create-blog>
+          </div>
+      </div>
+  
+  </div>

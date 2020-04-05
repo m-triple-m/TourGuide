@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5">
+<!-- <div class="container-fluid mt-5">
     <div class="row">
         <div class="col-md-4">
             <mat-card>
@@ -19,4 +19,42 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+<div class="container">
+    <p class="text-center h4">File Share Dashboard</p>
+    <mat-card>
+        <mat-card-content class="card-body">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <input type="file" (change)="onFileChange($event)" multiple>
+                </div>
+            </div>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col text-center">Image</div>
+                    <div class="col text-center">Modified</div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <div class="files_area card-body" *ngFor="let image of uploadedImages;let i =  index">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img class="center-block" class="img-fluid" [src]="'http://localhost:3000/hostimages/'+image.name">
+                    </div>
+                    <div class="col">
+                        <p class="h5 text-center">{{image.date | date}}</p>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-danger" (click)="remImage(i)"><fa-icon [icon]="delete"></fa-icon></button>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
 </div>

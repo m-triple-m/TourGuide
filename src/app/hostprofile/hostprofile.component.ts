@@ -26,7 +26,6 @@ export class HostprofileComponent implements OnInit {
   currentUser;
   reviewForm;
   reviews;
-  hostimages = ['assets/guest.jpeg', 'assets/images/cta01.jpg']
 
   constructor(private hosts:HostService,private formbuilder:FormBuilder,  private activatedroute:ActivatedRoute) { }
 
@@ -40,15 +39,15 @@ export class HostprofileComponent implements OnInit {
     this.refreshReview(this.hostid);
   }
 
-  initForm(hostid)
-  {
-    this.reviewForm = this.formbuilder.group({
-      user : this.currentUser._id,
-      host : hostid,
-      rating: 5,
-      review : '',
-    })
-  }
+  // initForm(hostid)
+  // {
+  //   this.reviewForm = this.formbuilder.group({
+  //     user : this.currentUser._id,
+  //     host : hostid,
+  //     rating: 5,
+  //     review : '',
+  //   })
+  // }
 
   profile(id)
   {
@@ -56,17 +55,17 @@ export class HostprofileComponent implements OnInit {
     {
       console.log(data);
       this.host = data;
-      this.initForm(data);
+      // this.initForm(data);
     })
   }
 
-  addReview(formdata)
-  { 
-    this.hosts.addReview(formdata).subscribe((data)=>{
-      console.log(data);
-      this.refreshReview(this.hostid);
-    })
-  }
+  // addReview(formdata)
+  // { 
+  //   this.hosts.addReview(formdata).subscribe((data)=>{
+  //     console.log(data);
+  //     this.refreshReview(this.hostid);
+  //   })
+  // }
 
   refreshReview(id)
   {

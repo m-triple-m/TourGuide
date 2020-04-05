@@ -1,8 +1,46 @@
-<div class="container-fluid mt-5" *ngIf="host">
+<div class="container-fluid top-con" *ngIf="host">
+  <p class="display-4 text-center">Host Dashboard</p>
+  <hr>
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
-            <mat-card class="mt-4">
+        <div class="col-md-4" style="border-right: 1px solid rgb(180, 180, 180);overflow-y: auto;height: 45rem;">
+          <mat-card>
+            <mat-card-content class="card-body">
+              <div class="text-center">
+                <img [src]="'http://localhost:3000/hostimages/'+host.avatar" class="img-fluid rounded-circle">
+              </div>
+              <hr>
+              <div class="row align-items-center mt-4">
+                <p class="h4 col-4">Name</p>
+                <p class="h4 col-1">:</p>
+                <p class="float-right h6">{{host.name}}</p>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <p class="h4 col-4">Username</p>
+                <p class="h4 col-1">:</p>
+                <p class="float-right h6">{{host.username}}</p> 
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <p class="h4 col-4">Email</p>
+                <p class="h4 col-1">:</p>
+                <p class="float-right h6">{{host.email}}</p>
+              </div>
+              <hr>
+              <div class="row align-items-center mt-4">
+                <button mat-button class="btn btn-block" color="primary" (click)="toggleFileDash()">Manage Images</button>
+              </div>
+              <hr>
+              <div class="row align-items-center mt-4">
+                <button mat-button class="btn btn-block" color="primary" (click)="toggleBookings()">Manage Bookings</button>
+              </div>
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-8" style="overflow-y: auto;height: 45rem;">
+            <div class="booking-area" *ngIf="showBookings">
+              <mat-card>
                 <mat-card-header>
                     <p class="h5">New Bookings</p>
                 </mat-card-header>
@@ -98,8 +136,8 @@
                               <p class="h6">Address :{{booking.user.address}}</p>
                               <hr>
                               <div class="row">
-                                <p class="h6">Start Date :{{booking.startDate | date}}</p>
-                                <p class="h6">End Date :{{booking.endDate | date}}</p>
+                                <p class="h6 col-6">from :{{booking.startDate | date}}</p>
+                                <p class="h6">to :{{booking.endDate | date}}</p>
                               </div>
                           </div>
                           
@@ -108,8 +146,12 @@
 
                 </mat-card-content>
             </mat-card>
+            </div>
+
+            
+            <app-image-manager [host]="host" *ngIf="showImgDash"></app-image-manager>
+            <!-- <app-image-dashboard *ngIf="showImgDash" [host] = "host"></app-image-dashboard> -->
         </div>
     </div>
 
-    <app-image-manager [host]="host"></app-image-manager>
 </div>

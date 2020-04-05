@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           console.log("Login success");
           if (this.logged_user.admin) {
             console.log('admin');
-            sessionStorage.setItem("admin", 'true');
+            sessionStorage.setItem("isadmin", JSON.stringify(true));
             this.router.navigate(['/admin']);
             return;
           }

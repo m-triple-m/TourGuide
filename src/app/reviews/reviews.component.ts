@@ -20,10 +20,10 @@ export class ReviewsComponent implements OnInit
   ngOnInit() {
     this.currentUser = JSON.parse(sessionStorage.getItem('user'));
     
-    if(this.reviews){
+    if(this.reviews && this.currentUser){
       this.getMyReview();
+      this.initForm(this.myreview);
     }
-    this.initForm(this.myreview);
   }
 
   addReview(formdata){

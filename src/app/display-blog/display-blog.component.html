@@ -1,0 +1,50 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">Tourist Blogs</h1><hr>
+        <!-- <div class="row justify-content-center">
+          <div class="col-md-3">
+            <div class="btn-group">
+              <button class="btn btn-danger">Search By</button>
+              <div ngbDropdown class="btn-group">
+                <button class="btn btn-outline-danger" id="dropdownBasic1" ngbDropdownToggle>{{type}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem (click)="setType('City')">City</button>
+                  <button ngbDropdownItem (click)="setType('State')">State</button>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="col-md-9">
+              <div class="input-group">
+              
+                <input class="form-control" #city id="searchbox">
+                <div class="input-group-append">
+                  <button mat-button color="accent" (click)="search(city.value)">Search</button>
+                </div>
+              </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<div class="container" *ngIf="blogs">
+    <mat-card class="item-card mt-5" *ngFor="let blog of blogs;let i = index">
+        <mat-card-header style="padding: 20px;">
+          <div mat-card-avatar [style.background-image]="'url(http://localhost:3000/guide/'+blog.guide.avatar+')'" style="background-size: cover;"></div>
+          <mat-card-title>{{blog.guide.name}}</mat-card-title>
+          <mat-card-subtitle>{{blog.created | date}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="img-area" [style.background-image]="'url(http://localhost:3000/guide/'+blog.blogImage+')'"></div>
+        <mat-card-content style="padding: 20px;">
+          <h3>{{blog.text}}</h3><br>
+          <p>{{blog.text}}</p>
+        </mat-card-content>
+        <mat-card-actions style="padding: 50px;">
+          
+            <div class="row">
+              <p>{{totalLikes[i]}} likes</p>
+              <button class="ml-auto float-right" mat-fab (click)="addLike(blog._id)"><fa-icon [icon]="like"></fa-icon></button>
+            </div>
+        </mat-card-actions>
+      </mat-card>
+</div>

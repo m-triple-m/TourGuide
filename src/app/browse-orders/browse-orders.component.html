@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-content>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>All orders booked</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{order.first}} {{order.last}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Booked {{order.orderdate | date}}
+                            </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>

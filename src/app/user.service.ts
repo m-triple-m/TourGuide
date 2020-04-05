@@ -60,6 +60,9 @@ logout()
 {
   console.log("logged out");
   sessionStorage.removeItem("user");
+  sessionStorage.removeItem("ishost");
+  sessionStorage.removeItem("isadmin");
+  sessionStorage.removeItem("isguide");
   this.loggedin=false;
   if(sessionStorage.getItem('host')){
     this.router.navigate(['/hostlogin'])
@@ -67,7 +70,5 @@ logout()
   else{
     this.router.navigate(['/login'])
   }
-  sessionStorage.removeItem("host");
-  sessionStorage.removeItem("admin");
 }
 }

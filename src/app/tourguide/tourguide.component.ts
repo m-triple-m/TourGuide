@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import{TourguideService} from '../tourguide.service'
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 
@@ -16,8 +17,10 @@ export class TourguideComponent implements OnInit {
   allusers;
   submitted=false;
   hide = true;
+  avatar;
+  displayImg;
 
-  constructor(private formBuilder:FormBuilder, private userservice:TourguideService) { this.forms; }
+  constructor(private formBuilder:FormBuilder, private guideservice:TourguideService, private router: Router) { this.forms; }
     LangList: string[] = ['Hindi', 'English', 'Tamil', 'Telugu', 'Punjabi', 'Malayalam', 'Urdu'];
   ngOnInit() {
     this.getAllTourGuide();
@@ -40,15 +43,21 @@ export class TourguideComponent implements OnInit {
   }
 
   onsubmit(formdata){
-    this.submitted=true;
   console.log(formdata);
   if(!this.forms.valid){
     return;
   }
-  this.userservice.addTourguide(formdata).subscribe((message)=>{
-console.log(message);
-this.forms.reset();
-this.submitted=false;
+  formdata.avatar = this.avatar;
+  this.guideservice.addTourguide(formdata).subscribe((message)=>{
+  console.log(message);
+  this.forms.reset();
+  Swal.fire({
+    title : 'Welcome to GuideMe',
+    text : 'Now Login to continue',
+    icon : 'success'
+  }).then(() => {
+    this.router.navigate(['/guidelogin'])
+  })
 
   })
   // this.userservice.addUser(formdata).subscribe((message)=>{
@@ -79,10 +88,40 @@ this.submitted=false;
 
   getAllTourGuide()
   {
-    this.userservice.getTourGuide().subscribe((users)=>{
+    this.guideservice.getTourGuide().subscribe((users)=>{
       console.log(users);
       this.allusers=users;
     })
+  }
+
+  setImage(event){
+    let files = event.target.files;
+    if(files.length===0)
+      return;
+
+    var mimeType=files[0].type;
+    if(mimeType.match(/image\/*/)==null)
+    { 
+      Swal.fire("Images Only");
+      return;
+    }
+    this.preview(event.target.files)
+    let formData=new FormData();
+    let selectedFile=files[0];
+    this.avatar=selectedFile.name;
+    formData.append('image', selectedFile, selectedFile.name);
+    this.guideservice.uploadImage(formData).subscribe(data=>
+      {
+      console.log(data)
+      })
+  }
+
+  preview(files) {
+    var reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => { 
+      this.displayImg = reader.result;
+    }
   }
 
   ngOnDestroy(){document.body.classList.remove("bg-r");}

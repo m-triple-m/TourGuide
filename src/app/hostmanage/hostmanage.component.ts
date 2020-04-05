@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { HostService } from '../host.service';
 import { OrdersService } from '../orders.service';
@@ -11,10 +11,13 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./hostmanage.component.css']
 })
 export class HostmanageComponent implements OnInit {
-orders;
-showform=false;
-hostform;
-verification;
+  
+  orders;
+  showform=false;
+  hostform;
+  verification;
+
+  @Input('hosts') hosts;
   constructor( private order:OrdersService,private formbuilder:FormBuilder) {  }
 
   ngOnInit()

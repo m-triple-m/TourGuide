@@ -1,17 +1,23 @@
 <div class="hosts">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="" *ngIf="host">
-
-                <ngb-carousel *ngIf="hostimages">
-                    <ng-template ngbSlide *ngFor="let image of hostimages">
-                      <div class="picsum-img-wrapper">
-                        <img [src]="image" class="img-fluid rounded">
-                      </div>
-                    </ng-template>
-                  </ngb-carousel>
-                  <hr>
+    <div class="container-fluid">
+        <ngb-carousel *ngIf="host">
+            <ng-template ngbSlide *ngFor="let image of host.images">
+              <div class="picsum-img-wrapper text-center">
+                <img [src]="'http://localhost:3000/hostimages/'+image.name" class="img-fluid rounded" style="width: 85rem;height: 45rem;">
+              </div>
+            </ng-template>
+          </ngb-carousel>
+          <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md" *ngIf="host">
+                
                 <p class="display-4 text-center">{{host.name}}</p>
+                <div style="height: 350px;width: 300px;background-repeat: no-repeat;background-size: cover;background-position: center;"
+                [style.background-image]="'url(http://localhost:3000/hostimages/'+host.avatar+')'">
+
+                </div>
                 <br>
                 <p style="font-size: larger;">
                     <fa-icon [icon]="faEnvelope"></fa-icon> : {{host.email}}
@@ -21,28 +27,17 @@
                     <fa-icon [icon]="faHome"></fa-icon> : {{host.address}} ,{{host.city}} ,{{host.state}}
                     <br>
                 </p>
-                <!-- <div class="show-review" *ngIf="reviews">
-                                <ul class="list-group" *ngFor="let review of reviews">
-                                    <li class="list-group-item">review.rating</li>
-                                </ul>
-                            </div>
-                            <form [formGroup]="reviewForm" (submit)="addReview(reviewForm.value)" *ngIf="host">
-                                 <label>Write a review</label>
-                                 <textarea name="review" cols="60" rows="5" formControlName="review"></textarea>
-                                 <button class="btn btn-primary" > <fa-icon [icon]="faEdit"></fa-icon> Submit</button>
-                                 <ngx-star-rating formControlName="rating" [disabled]="false"></ngx-star-rating>
-                            </form>
-                        <br>                -->
+
+                <button mat-raised-button color="accent" [routerLink]="['/booking', host._id]"
+                routerLinkActive="router-link-active">Book Now <fa-icon [icon]="faPen"></fa-icon></button>
 
                 <app-reviews [reviews]="reviews" [myreview]="" [host_id]="hostid" *ngIf="reviews"></app-reviews>
-                <a class="btn btn-outline-success btn-sm" [routerLink]="['/booking', host._id]"
-                    routerLinkActive="router-link-active">Book Host<fa-icon [icon]="faPen"></fa-icon></a>
-                <br><br>
+                <!-- <br><br>
                 <div class="list-group">
                     <div class="list-group-item" *ngFor="let review of host.reviews">
                         {{review.review}}
                     </div> <br>
-                </div>
+                </div> -->
             </div>
             <br>
         </div>

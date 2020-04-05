@@ -10,7 +10,6 @@ import { HostComponent } from './host/host.component';
 import { LoginGuard } from './guards/login.guard';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { AdminComponent } from './admin/admin.component';
-import { CheckloginGuard } from './guards/checklogin.guard';
 import { WebsitestatsComponent } from './websitestats/websitestats.component';
 import { BrowseComponent } from './browse/browse.component';
 import { BookingComponent } from './booking/booking.component';
@@ -20,6 +19,13 @@ import { HostDashboardComponent } from './host-dashboard/host-dashboard.componen
 import { HostLoginComponent } from './host-login/host-login.component';
 import { HostmanageComponent } from './hostmanage/hostmanage.component';
 import { PaymentComponent } from './payment/payment.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { GuideDashboardComponent } from './guide-dashboard/guide-dashboard.component';
+import { DisplayBlogComponent } from './display-blog/display-blog.component';
+import { GuideloginComponent } from './guidelogin/guidelogin.component';
+import { HostloginGuard } from './guards/hostlogin.guard';
+import { GuideloginGuard } from './guards/guidelogin.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -30,20 +36,21 @@ const routes: Routes = [
   {path: 'tourist', component:TouristComponent},
   {path: 'tourguide', component:TourguideComponent},
   {path: 'host', component:HostComponent},
-  {path: 'checkout/:hostid', component:PaymentComponent},
+  {path: 'checkout/:hostid', component:PaymentComponent, canActivate : [LoginGuard]},
   {path: 'forgot',component:ForgotComponent},
-  {path: 'userdashboard', component:UserdashboardComponent},
-  {path: 'admin', component:AdminComponent},
-  {path: 'adminwebstats', component:WebsitestatsComponent},
-  {path: 'browse', component:BrowseComponent, },
-  {path: 'booking/:hostid', component: BookingComponent},
-  {path: 'guidebook/:guideid', component:TourguideComponent},
+  {path: 'userdashboard', component:UserdashboardComponent, canActivate : [LoginGuard]},
+  {path: 'guidedash', component:GuideDashboardComponent, canActivate : [GuideloginGuard]},
+  {path: 'admin', component:AdminComponent, canActivate : [AdminGuard]},
+  {path: 'browse', component:BrowseComponent},
+  {path: 'browseblog', component:DisplayBlogComponent},
+  {path: 'booking/:hostid', component: BookingComponent, canActivate : [LoginGuard]},
+  {path: 'guidebook/:guideid', component:TourguideComponent, canActivate : [LoginGuard]},
   {path: 'Guideprofile/:guideid', component:GuideprofileComponent},
   {path: 'hostprofile/:hostid', component:HostprofileComponent},
-  {path: 'hostdash', component:HostDashboardComponent},
+  {path: 'hostdash', component:HostDashboardComponent, canActivate : [HostloginGuard]},
   {path: 'hostlogin', component:HostLoginComponent},
-  {path: 'hostmanage', component:HostmanageComponent},
-
+  {path: 'guidelogin', component:GuideloginComponent},
+  {path : '**', component: NotFoundComponent},
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HostService } from '../host.service';
 import Swal from 'sweetalert2';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-image-manager',
@@ -12,6 +13,8 @@ export class ImageManagerComponent implements OnInit {
   @Input('host')
   host;
   uploadedImages;
+  delete = faTrashAlt;
+
   constructor(private hostservice: HostService) { }
 
   ngOnInit() {
@@ -38,16 +41,10 @@ export class ImageManagerComponent implements OnInit {
       Swal.fire("Images Only");
       return;
     }
-    let formDatas = [];
     let selectedFiles=[];
     
     for(let file of files){
-      selectedFiles.push(file.name);
-      // let fd = new FormData();
-      // fd.append('image', file, file.name);
-      // console.log(file);
-      // formDatas.push(fd);
-
+      selectedFiles.push({name : file.name, date : new Date()});
       let formData = new FormData();
       formData.append('image', file, file.name);
       this.hostservice.uploadImage(formData).subscribe( response =>
@@ -55,12 +52,12 @@ export class ImageManagerComponent implements OnInit {
         console.log(response);
         })
     }
+    console.log(selectedFiles);
     this.hostservice.addImages(this.host._id, {images: selectedFiles}).subscribe(data=> {
       console.log(data);
       this.gethost();
       
     })
-
     console.log(selectedFiles)
   }
 
@@ -70,13 +67,4 @@ export class ImageManagerComponent implements OnInit {
         console.log(data);
       })
     }
-
-
-    
-    // let formData = new FormData();
-    // formData.append('image', files[0], files[0].name);
-    // this.hostservice.uploadImage(formData).subscribe(response=>
-    //   {
-    //   console.log(response)
-    //   })
   }

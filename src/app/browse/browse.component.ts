@@ -44,6 +44,10 @@ export class BrowseComponent implements OnInit {
       this.hostService.searchName(value).subscribe(data=>{
         this.filterVerified(data);
     })
+    }else if( this.type == 'State'){
+      this.hostService.searchState(value).subscribe(data=>{
+        this.filterVerified(data);
+    })
     }
   }
 
@@ -77,6 +81,14 @@ export class BrowseComponent implements OnInit {
         return host.state == state;
       })
     })
+  }
+
+  sortAZ(){
+    this.hosts.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
   }
 
   filterVerified(hosts){

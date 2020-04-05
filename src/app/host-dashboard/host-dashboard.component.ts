@@ -14,6 +14,9 @@ export class HostDashboardComponent implements OnInit {
 
   bookings;
   host;
+  showImgDash = true;
+  showBookings = false;
+
   constructor(private orderService: OrdersService, private activeroute: ActivatedRoute, private hostservice: HostService) { }
 
   ngOnInit() {
@@ -68,6 +71,16 @@ export class HostDashboardComponent implements OnInit {
 
   completed(date){
     return new Date() > new Date(date);
+  }
+
+  toggleFileDash(){
+    this.showImgDash = true;
+    this.showBookings = false;
+  }
+
+  toggleBookings(){
+    this.showImgDash = false;
+    this.showBookings = true;
   }
 
 }

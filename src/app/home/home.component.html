@@ -81,18 +81,17 @@
   </div>
 </section>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mid-con">
   <p class="h1 text-center">Popular Hosts</p>
   <hr>
  <div class="row justify-content-center" *ngIf="hosts"> 
     
-      <div class="col-md-2" *ngFor="let host of hosts">
+      <div class="col-md-2" *ngFor="let host of hosts.slice(0, 5)">
         <div class="card" style="width:250px;height:400px;">
         <img class="card-img-top" style="width:250px;height:250px;" [src]="'http://localhost:3000/hostimages/'+host.avatar">
         <div class="card-body">
-          <h5 class="card-title">{{host.city}}</h5>
-          <p class="card-text">Review for Varanasi</p>
-          <p class="card-text"><small class="text-muted">Updated Review</small></p>
+          <h5 class="card-title">{{host.name}}</h5>
+          <p class="card-text">Host from {{host.city}}</p>
         </div>
       </div>
     </div>
@@ -101,6 +100,25 @@
       <button mat-fab [routerLink]="['/browse']" routerLinkActive="router-link-active"><fa-icon [icon]="more" ></fa-icon></button>
     </div>
   </div>
+
+  <div class="container mt-5" *ngIf="likesobj">
+    <p class="h1 text-center mt-5">Popular Blogs</p>
+  <hr>
+    <mat-card class="item-card mt-5" *ngFor="let obj of likesobj.slice(0, 4);let i = index">
+        <!-- <mat-card-header style="padding: 20px;">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{obj.blog.title}}</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header> -->
+        <div class="img-area" [style.background-image]="'url(http://localhost:3000/guide/'+obj.blog.blogImage+')'"></div>
+        <mat-card-content style="padding: 20px;">
+          <p>{{obj.blog.text}}</p>
+        </mat-card-content>
+        <mat-card-actions style="padding: 20px;">
+              <p class="float-right"><strong>{{obj.user.length}} Users liked this</strong></p>
+        </mat-card-actions>
+      </mat-card>
+</div>
  </div>
 
  <section class="text-white text-center" style="background:url('assets/background/bg-masthead.jpg') no-repeat center center;background-size:cover;">

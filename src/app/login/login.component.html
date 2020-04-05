@@ -1,10 +1,7 @@
-<br>
-<br>
-<br><br>
-<div class="container">
+<div class="container top-con">
   <div class="row justify-content-center"> 
       
-    <mat-card class="col-md-4" style="background-color: #4242428c;">    
+    <!-- <mat-card class="col-md-4" style="background-color: #4242428c;">    
         <div class="card-header" style="padding: 1rem 1rem 1rem 1rem; box-shadow:4px 4px 4px; margin-top:-60px; text-align: center; background-color:#dc3545;border-radius: 10px; color:#424242;">
         <p class="h5" style="color: ghostwhite;">Welcome to the GuideMe family!</p>
         </div>
@@ -33,7 +30,38 @@
         <button mat-raised-button [routerLink]="['/tourist']" routerLinkActive="router-link-active" >Sign Up</button>
           <a class="nav-link" [routerLink]="['/forgot']" routerLinkActive="router-link-active"><p style="font-size: small; color: cyan; text-align: right;">Forgot Password?</p></a>
         </mat-card-content>
-      </mat-card>        
+      </mat-card>
+       -->
+      <mat-card class="col-md-4 login-card" >    
+        <div class="card-header" style="padding: 1rem 1rem 1rem 1rem; box-shadow:4px 4px 4px; margin-top:-60px; text-align: center; background-color:#dc3545;border-radius: 10px; color:#424242;">
+        <p class="h5" style="color: ghostwhite;">Welcome to the GuideMe family!</p>
+        </div>
+        
+        <mat-card-content>
+          <div class="text-center">
+            <img src="assets/icon.png" height="200px">
+          </div>
+            <form [formGroup]="loginform" (submit)="loginSubmit(loginform.value)">
+            <div class="example-container">
+           <br><br>
+              <input class="form-control mt-2" placeholder="Username" formControlName="username">
+        
+            <input class="form-control mt-4" placeholder="password" formControlName="password" type="password">
+          <button mat-raised-button class="btn btn-block mt-5" style="background-color: #dc3545;color: white;">Log in</button>
+          <br>
+          <mat-checkbox class="mt-3" style="color: white;">Remember me</mat-checkbox>      
+          <hr>
+          
+        </div>
+        </form>
+        <div class="row">
+          <div class="col-md-8">
+            <a [routerLink]="['/tourist']" routerLinkActive="router-link-active" ><p class="text-light text-sm">Sign Up</p></a>
+          </div>
+          <a [routerLink]="['/forgot']" routerLinkActive="router-link-active"><p class="text-light text-sm ">Forgot Password?</p></a>
+        </div>
+        </mat-card-content>
+      </mat-card>
   </div>
   </div>
       

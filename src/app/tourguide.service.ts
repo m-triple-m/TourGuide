@@ -25,4 +25,8 @@ getTourGuidebyCity(city)
 {
   return this.http.get(this.url+`/tourguide/getguidecity/${city}`)
 }
+
+uploadImage(file){
+  return this.http.post(this.url+'/blog/addimg',file);
+  }
 }

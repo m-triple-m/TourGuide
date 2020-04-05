@@ -53,11 +53,15 @@ getHostbyCity(city)
 }
 
 searchCity(city){
-  return this.http.get(this.url+`host/matchbycity/${city}`)
+  return this.http.get(this.url+`/host/matchbycity/${city}`)
+}
+
+searchState(state){
+  return this.http.get(this.url+`/host/matchbystate/${state}`)
 }
 
 searchName(name){
-  return this.http.get(this.url+`host/matchbyname/${name}`)
+  return this.http.get(this.url+`/host/matchbyname/${name}`)
 }
 
 UpdateHost(host_id, hostdata){

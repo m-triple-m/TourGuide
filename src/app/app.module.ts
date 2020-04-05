@@ -29,16 +29,26 @@ import { TourguidebookingComponent } from './tourguidebooking/tourguidebooking.c
 import { GuideprofileComponent } from './guideprofile/guideprofile.component';
 import { HostprofileComponent } from './hostprofile/hostprofile.component';
 
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+
+
 import { HostDashboardComponent } from './host-dashboard/host-dashboard.component';
 import { HostLoginComponent } from './host-login/host-login.component';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ImageManagerComponent } from './image-manager/image-manager.component';
 
 import { SliderModule } from 'angular-image-slider';
 import { PaymentComponent } from './payment/payment.component';
 import { FooterComponent } from './footer/footer.component';
+import { ImageDashboardComponent } from './image-dashboard/image-dashboard.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BrowseOrdersComponent } from './browse-orders/browse-orders.component';
+import { DisplayBlogComponent } from './display-blog/display-blog.component';
+import { CreateBlogComponent } from './create-blog/create-blog.component';
+import { GuideDashboardComponent } from './guide-dashboard/guide-dashboard.component';
+import { GuideloginComponent } from './guidelogin/guidelogin.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +76,13 @@ import { FooterComponent } from './footer/footer.component';
     ImageManagerComponent,
     PaymentComponent,
     FooterComponent,
+    ImageDashboardComponent,
+    NotFoundComponent,
+    BrowseOrdersComponent,
+    DisplayBlogComponent,
+    CreateBlogComponent,
+    GuideDashboardComponent,
+    GuideloginComponent,
    ],
   imports: [
     BrowserModule,

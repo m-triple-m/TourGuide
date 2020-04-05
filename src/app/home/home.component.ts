@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faCoffee, faPen, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { HostService } from '../host.service';
+import { GuideService } from '../guide.service';
 @Component
 ({
   selector: 'app-home',
@@ -14,9 +15,21 @@ export class HomeComponent implements OnInit
   faPen=faPen;
   more = faArrowRight;
   hosts;
+  likesobj;
 
-  constructor(private hostservice: HostService){
+  constructor(private hostservice: HostService,private guideservice: GuideService){
     
+  }
+
+  getLikes(){
+    this.guideservice.getAllLikes().subscribe((data : any) => {
+      // console.log(data);
+      this.likesobj = data.sort((e, f) => {
+        return f.user.length - e.user.length;
+      })
+      console.log(this.likesobj);
+    
+    })
   }
   
   ngOnInit() 
@@ -24,6 +37,7 @@ export class HomeComponent implements OnInit
     document.body.classList.add("bg-home");
     document.body.classList.add("is-preload");
     this.getHosts();
+    this.getLikes();
   }
 
   getHosts(){

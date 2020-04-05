@@ -40,7 +40,6 @@ export class HostComponent implements OnInit {
       address:["", Validators.required],
       aadhaar:["", [Validators.required, Validators.maxLength(12)]],
       verified:false,
-      images:[],
     },
     {validator : this.matchPassword('password','confirm')})
     console.log(sessionStorage.getItem('user'));

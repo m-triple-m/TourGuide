@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HostService } from '../host.service';
 import { OrdersService } from '../orders.service';
 import Swal from 'sweetalert2';
@@ -17,12 +17,26 @@ export class PaymentComponent implements OnInit {
   user;
   handler;
 
-  constructor(private orderservice: OrdersService) { }
+  constructor(private orderservice: OrdersService, private router: Router) { }
 
   ngOnInit() {
     console.log(`to pay ${this.amount}`)
     this.user = JSON.parse(sessionStorage.getItem('user')); 
     this.loadStripe();
+  }
+
+
+  addOrder(){
+    this.orderservice.addOrder(this.order).subscribe((message)=>
+          {
+            console.log(message); 
+            this.router.navigate(['/userdashboard'])
+            Swal.fire({
+              icon: 'success',
+              title: 'Booking Requested',
+              text: 'You will be informed once the booking is confirmed from the host end!'
+            })
+          })
   }
 
   makePayment(amt) {    
@@ -33,26 +47,26 @@ export class PaymentComponent implements OnInit {
       token: function (token: any) {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
-        console.log(token)
-        // alert('Token Created!!');
-        this.order.addOrder(this.order).subscribe((message)=>
-          {
-            console.log(message); 
-            this.router.navigate(['/userdashboard'])
-            Swal.fire({
-              icon: 'success',
-              title: 'Booking Requested',
-              text: 'You will be informed once the booking is confirmed from the host end!'
-            })
-          })
-        alert('Payment Successful');
+        console.log(token);
+        Swal.fire({
+          icon: 'success',
+          title: 'Booking Requested',
+          text: 'You will be informed once the booking is confirmed from the host end!'
+        }).then(() => {
+          
+        //   this.orderservice.addOrder(this.order).subscribe((message)=>
+        //   {
+        //     console.log(message); 
+        //     this.router.navigate(['/userdashboard'])
+        //   })
+        })
       }
     });
 
     handler.open({
       name: 'GuideMe',
       description: 'Great platform for couchsurfing and tourism!!',
-      amount: 100 * amt
+      amount: 100 * amt,
     });
   }
 
@@ -68,17 +82,12 @@ export class PaymentComponent implements OnInit {
           key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
           locale: 'auto',
           token: function (token: any) {
-            // You can access the token ID with `token.id`.
-            // Get the token ID to your server-side code for use.
-            
             console.log(token)
             alert('Payment Success!!');
           }
         });
       }
-        
       window.document.body.appendChild(s);
     }
   }
-
 }

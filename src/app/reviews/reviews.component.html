@@ -1,13 +1,17 @@
-<div class="card mt-3" *ngIf="currentUser && reviews">
-    <div class="card-body">
-        <div *ngFor = "let review of reviews">
-            <div *ngIf="review && review.user._id != currentUser._id">
-                <p class="h6">{{review.user.name}}</p>
-                <ngb-rating [rate]="review.rating" [readonly]="true" max = '5' style="color: rgb(0, 89, 255);font-size: x-large;"></ngb-rating>
-                <p class="text-muted">{{review.review}}</p>
-                <hr>
+<div class="row">
+    <div class="col-md">
+        <div class="card mt-3" *ngIf="reviews">
+            <div class="card-body col-md">
+                <div *ngFor = "let review of reviews">
+                    <div *ngIf="review">
+                        <p class="h6">{{review.user.name}}</p>
+                        <ngb-rating [rate]="review.rating" [readonly]="true" max = '5' style="color: rgb(0, 89, 255);font-size: x-large;"></ngb-rating>
+                        <p class="text-muted">{{review.review}}</p>
+                        <hr>
+                    </div>
+                    
+                </div>
             </div>
-            
         </div>
     </div>
 </div>

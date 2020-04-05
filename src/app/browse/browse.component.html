@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Find Perfect Host </h1>
+    <h1 class="display-4">Find Perfect Host</h1>
     <hr class="my-2">
 
     <div class="row justify-content-center">
@@ -29,34 +29,35 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div id="host-area">
-    <p class="h4 text-center">Hosts</p>
-    <hr class="mb-4">
-    <p class="text-muted text-center">sort options</p>
     <div class="row justify-content-center">
-      <div class="col-md-4">
+      <div class="col-md">
 
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+        <div ngbDropdown class="d-inline-block col-md-4">
+          <button class="btn btn-outline-secondary btn-block" id="dropdownBasic1" ngbDropdownToggle>City</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem *ngFor="let city of cities" (click)="filterByCity(city)">{{city}}</button>
           </div>
         </div>
 
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+        <div ngbDropdown class="d-inline-block col-md-4">
+          <button class="btn btn-outline-secondary btn-block" id="dropdownBasic1" ngbDropdownToggle>State</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem *ngFor="let state of states" (click)="filterByState(state)">{{state}}</button>
           </div>
         </div>
+        <button class="btn btn-secondary col-md-4" (click)="sortAZ()">Sort A-Z</button>
       </div>
     </div>
+    <hr class="mb-4">
     <div class="row mt-5 mb-5">
       <div class="col-md-3 mt-3" *ngFor="let host of hosts">
         <div class="card">
-          <img [src]="'http://localhost:3000/hostimages/'+host.avatar" class="img-fluid card-img-top">
-          <div class="card-body text-center">
+          <div style="height: 270px;background-repeat: no-repeat;background-size: cover;background-position: center;"
+           [style.background-image]="'url(http://localhost:3000/hostimages/'+host.avatar+')'"></div>
+          <!-- <img [src]="'http://localhost:3000/hostimages/'+host.avatar" class="img-fluid card-img-top"> -->
+          <div class="card-body text-center" style="height: 180px;">
             <p class="h3">{{host.name}}</p>
             <p class="text-muted">{{host.address}}, {{host.city}}, {{host.state}}</p>
             <p class="text-muted">Phone : {{host.phone}}</p>

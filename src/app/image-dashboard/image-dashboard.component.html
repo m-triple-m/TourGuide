@@ -1,0 +1,43 @@
+<!-- <div class="container">
+    <p class="text-center display-4">File Share Dashboard</p>
+    <mat-card>
+        <mat-card-content class="card-body">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-4 text-center">Filename</div>
+                    <div class="col-1"></div>
+                    <div class="col-3">Modified By</div>
+                    <div class="col-3">Modified</div>
+                </div>
+            </div>
+            <div class="files_area card-body" *ngFor="let file of host.images;let i = index">
+                <div class="row align-items-center">
+                    <div class="col-1">
+                        <img [src]="'assets/icons/'+getext(file.name)+'.svg'" class="img-fluid" style="height: 3rem;">
+                    </div>
+                    <div class="col-4">
+                        <p class="h5 mx-auto">{{file.name}}</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="h5 mx-auto">{{file.uploader}}</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="h5 mx-auto">{{file.date | date}}</p>
+                    </div>
+                    <div class="col-1">
+                        <p class="mx-auto">{{getSize(file.size)}}</p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
+    
+    <mat-card>
+        <mat-card-content class="card-body">
+            <input type="file" (change)="onFileChanged($event)" multiple>
+        </mat-card-content>
+    </mat-card>
+    
+</div> -->

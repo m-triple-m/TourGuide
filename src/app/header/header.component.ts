@@ -14,15 +14,24 @@ export class HeaderComponent implements OnInit {
   faUser=faUser;
   ishost;
   isadmin;
+  isguide;
+
+  loggedin = false;
   
   constructor(private userservice:UserService) { }
 
   ngOnInit()
    {
-    this.ishost = sessionStorage.getItem('host');
-    this.isadmin = sessionStorage.getItem('admin');
-    console.log(this.ishost);
+     let user = JSON.parse(sessionStorage.getItem('user'))
+     if(user){
+       this.loggedin = true;
+     }
+    this.ishost = sessionStorage.getItem('ishost');
+    this.isadmin = sessionStorage.getItem('isadmin');
+    this.isguide = sessionStorage.getItem('isguide');
+    // console.log(this.ishost);
    }
+   
 
 logout()
 {

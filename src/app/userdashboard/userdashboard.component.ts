@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HostService } from '../host.service';
-import { TourguideService } from '../tourguide.service';
 import { OrdersService } from '../orders.service';
 import { FormBuilder } from '@angular/forms';
 import { UserService } from '../user.service';
@@ -16,6 +14,9 @@ export class UserdashboardComponent implements OnInit {
   currentuser;
   bookings;
   editform;
+
+  showeditform = false;
+  showbookings = false;
 
   constructor(private formbuilder: FormBuilder,private userService: UserService,
     private orderservice: OrdersService) { }
@@ -45,6 +46,16 @@ export class UserdashboardComponent implements OnInit {
       console.log(data);
       this.bookings = data;
     })
+  }
+
+  toggleBookings(){
+    this.showeditform = false;
+    this.showbookings = true;
+  }
+
+  toggleEditForm(){
+    this.showeditform = true;
+    this.showbookings = false;
   }
 
 }

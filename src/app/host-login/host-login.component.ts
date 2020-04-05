@@ -46,7 +46,7 @@ if(this.logged_user){
   if(this.logged_user.password==formdata.password)
 {
   sessionStorage.setItem("user", JSON.stringify(this.logged_user));
-  sessionStorage.setItem("host", 'true');
+  sessionStorage.setItem("ishost", JSON.stringify(true));
   this.userservice.setLogin();
   console.log("Login success");
   this.router.navigate(['/hostdash']);

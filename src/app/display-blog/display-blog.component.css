@@ -1,0 +1,9 @@
+.img-area{
+    height : 40rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.item-card{
+    padding: 0px;
+}
